@@ -1,6 +1,6 @@
-
+import About_us from '@pages/Abous_us'
+import Home from '@pages/Home'
 import { Route, Switch } from 'wouter'
-import Index from '@pages/Index'
 
 const Routes = () => {
 	return (
@@ -8,8 +8,29 @@ const Routes = () => {
 			<Switch>
 				<Route
 					path='/'
-					component={Index}
+					component={Home}
 				/>
+				<Route
+					path='/about_us'
+					component={About_us}
+				/>
+				{/* <Route
+					path='/rubros'
+					component={Rubros}
+				/>
+				<Route
+					path='/partners'
+					component={Partners}
+					<Route
+						path='/blog'
+						component={Blog}
+					/> 
+					<Route
+						path='/contact_us'
+						component={Contact}
+					/> 
+				/> 
+				*/}
 
 				<Route>404: No such page!</Route>
 			</Switch>
