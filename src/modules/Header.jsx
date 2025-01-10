@@ -1,5 +1,3 @@
-import { type } from 'os'
-
 import { useEffect, useState } from 'react'
 
 const Header = () => {
@@ -50,7 +48,7 @@ const Content = () => {
 					items.map(item => (
 						<ItemComponent
 							item={item}
-							type='menu'
+							type={'menu'}
 						/>
 					))}
 				{/* items.map(item => (
@@ -69,7 +67,7 @@ const Content = () => {
 					{items.map(item => (
 						<ItemComponent
 							item={item}
-							type='hamburger'
+							type={'hamburger'}
 						/>
 					))}
 				</ul>
