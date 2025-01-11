@@ -1,6 +1,6 @@
+import Main_screen from '@components/Main_screen'
+import Section from '@components/Section'
 import Header from '@modules/Header'
-
-import { Main_screen, Section } from './Home'
 
 const About_us = () => {
 	return (

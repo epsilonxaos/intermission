@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+
 
 const Header = () => {
 	return (
@@ -130,7 +131,10 @@ const ItemComponent = ({ item, type }) => {
 				'--translateY-initial': '-20px',
 			}}>
 			<a href={item.url}>{item.name} </a>
-			<Adorno_circulo_item item={item} />
+			<Adorno_circulo_item
+				item={item}
+				margin='mx-0'
+			/>
 		</li>
 	)
 }
@@ -180,7 +184,7 @@ const ButtonHamburgerMenu = ({ statusAndSet }) => {
 // 	)
 // }
 
-export const Adorno_circulo_item = ({ item, size = 'sm-sz', bottom = '8px', mrg = '1' }) => {
+export const Adorno_circulo_item = ({ item, size = 'sm-sz', bottom = '8px', margin = 'mx-1' }) => {
 	const sizes = {
 		'sm-sz': { textSize: '7px', circle: 'h-1 w-1' },
 		'md-sz': { textSize: '9px', circle: 'h-2 w-2' },
@@ -188,10 +192,12 @@ export const Adorno_circulo_item = ({ item, size = 'sm-sz', bottom = '8px', mrg 
 	}
 
 	return (
-		<span className={`relative mx-${mrg} inline-block`}>
+		<span className={`relative ${margin} inline-block`}>
 			{/* <span className='inline-block h-1 w-1 rounded-full bg-white text-right text-xs leading-none text-white'> */}
 			<span className={`${sizes[size].circle} inline-block rounded-full bg-white`}></span>
-			<span className={`absolute bottom-[${bottom}] text-[${sizes[size].textSize}] text-white`}>{item.estrella}</span>
+			<span className={`absolute bottom-[${bottom}] text-[${sizes[size].textSize}] text-white`}>
+				{item.estrella ?? ''}
+			</span>
 		</span>
 	)
 }

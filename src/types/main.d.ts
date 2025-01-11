@@ -42,7 +42,14 @@ export type TButtonParams = {
 	onClick?: () => void
 }
 
+type TContentReact = {
+	children: ReactNode
+	className?: string
+}
+
 export type TTexts = {
 	children: ReactNode
 	className?: string
 }
+
+export type TComponent = Partial<TContentReact>
