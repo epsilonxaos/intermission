@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react'
 
 const Header = () => {
 	return (
-		<nav className='absolute flex w-full justify-center'>
+		<nav
+			className='animate-fading-in absolute flex w-full justify-center'
+			style={{
+				'--transition-duration': '1000ms',
+				'--translateY-initial': '-30px',
+			}}>
 			<Content />
 		</nav>
 	)
@@ -39,7 +44,7 @@ const Content = () => {
 		<div
 			className={`${hamburgerMenuStatus && 'h-fit flex-wrap'} max-w-navbar fixed inset-y-5 flex h-16 w-full items-center justify-center bg-[#0D3381] bg-opacity-10 backdrop-blur-md md:rounded-full`}>
 			<ul
-				className={`text-main flex h-16 w-full items-center justify-between px-8 transition-all duration-300 hover:bg-[#0D3381] hover:bg-opacity-30 sm:justify-evenly sm:px-0`}>
+				className={`text-main flex h-16 w-full items-center justify-between px-8 transition-all hover:bg-[#0D3381] hover:bg-opacity-30 sm:justify-evenly sm:px-0`}>
 				<Bolitas />
 				<ButtonHamburgerMenu statusAndSet={[hamburgerMenuStatus, setHamburgerMenuStatus]} />
 
@@ -47,6 +52,7 @@ const Content = () => {
 				{!hamburgerMenuStatus &&
 					items.map(item => (
 						<ItemComponent
+							key={item.name}
 							item={item}
 							type={'menu'}
 						/>
@@ -63,9 +69,15 @@ const Content = () => {
 
 			{/* Elemento desplegable del menú */}
 			{hamburgerMenuStatus && (
-				<ul className='text-main animate-fade-in w-full flex-col bg-[#0D3381] bg-opacity-15 py-4 transition-all duration-300 hover:bg-[#0D3381] hover:bg-opacity-30'>
+				<ul
+					className='text-main animate-fading-in w-full flex-col bg-[#0D3381] bg-opacity-15 py-4 transition-all hover:bg-[#0D3381] hover:bg-opacity-30'
+					style={{
+						'--transition-duration': '300ms',
+						'--translateY-initial': '-10px',
+					}}>
 					{items.map(item => (
 						<ItemComponent
+							key={item.name}
 							item={item}
 							type={'hamburger'}
 						/>
@@ -74,12 +86,12 @@ const Content = () => {
 			)}
 			{/* {hamburgerMenuStatus && (
 				// pt-4
-				<ul className='text-main animate-fade-in w-full flex-col bg-[#0D3381] bg-opacity-15 py-4 transition-all duration-300 hover:bg-[#0D3381] hover:bg-opacity-30'>
+				<ul className='text-main animate-fade-in w-full flex-col bg-[#0D3381] bg-opacity-15 py-4 transition-all hover:bg-[#0D3381] hover:bg-opacity-30'>
 					{items.map(item => (
 						// bg-[#0D3381] bg-opacity-15
 						<li
 							key={item.name}
-							className='animate-fade-in relative py-3 text-center transition-all delay-100 duration-300 hover:bg-[#0D3381] hover:bg-opacity-30'>
+							className='animate-fade-in relative py-3 text-center transition-all delay-100 hover:bg-[#0D3381] hover:bg-opacity-30'>
 							<a href={item.url}>{item.name} </a>
 							<Adorno_link item={item} />
 						</li>
@@ -106,15 +118,19 @@ const ItemComponent = ({ item, type }) => {
 	// Podría ser un tipo
 	const classByType = {
 		hamburger:
-			'animate-fade-in relative py-3 text-center transition-all delay-100 duration-300 hover:bg-[#0D3381] hover:bg-opacity-30',
+			'animate-fading-in relative py-3 text-center transition-all delay-100 hover:bg-[#0D3381] hover:bg-opacity-30',
 		menu: 'hidden sm:block',
 	}
 	return (
 		<li
 			key={item.name}
-			className={classByType[type]}>
+			className={classByType[type]}
+			style={{
+				'--transition-duration': '600ms',
+				'--translateY-initial': '-20px',
+			}}>
 			<a href={item.url}>{item.name} </a>
-			<Adorno_items_menu item={item} />
+			<Adorno_circulo_item item={item} />
 		</li>
 	)
 }
@@ -138,7 +154,7 @@ const ButtonHamburgerMenu = ({ statusAndSet }) => {
 				className='text-white focus:outline-none'
 				onClick={() => setHamburgerMenuStatus(!hamburgerMenuStatus)}>
 				<svg
-					className={`h-6 w-6 transform transition-transform duration-300 ${hamburgerMenuStatus ? 'rotate-90' : ''}`}
+					className={`h-6 w-6 transform transition-transform ${hamburgerMenuStatus ? 'rotate-90' : ''}`}
 					fill='none'
 					stroke='currentColor'
 					viewBox='0 0 24 24'
@@ -154,13 +170,29 @@ const ButtonHamburgerMenu = ({ statusAndSet }) => {
 	)
 }
 
-const Adorno_items_menu = ({ item }) => {
+// export const Aaadorno_circulo_item = ({ item }) => {
+// 	return (
+// 		<div className='relative inline-block'>
+// 			{/* <span className='inline-block h-1 w-1 rounded-full bg-white text-right text-xs leading-none text-white'> */}
+// 			<span className='inline-block h-1 w-1 rounded-full bg-white'></span>
+// 			<span className='absolute bottom-3 text-[7px] text-white'>{item.estrella}</span>
+// 		</div>
+// 	)
+// }
+
+export const Adorno_circulo_item = ({ item, size = 'sm-sz', bottom = '8px', mrg = '1' }) => {
+	const sizes = {
+		'sm-sz': { textSize: '7px', circle: 'h-1 w-1' },
+		'md-sz': { textSize: '9px', circle: 'h-2 w-2' },
+		'lg-sz': { textSize: '12px', circle: 'h-3 w-3' },
+	}
+
 	return (
-		<>
+		<span className={`relative mx-${mrg} inline-block`}>
 			{/* <span className='inline-block h-1 w-1 rounded-full bg-white text-right text-xs leading-none text-white'> */}
-			<span className='inline-block h-1 w-1 rounded-full bg-white'></span>
-			<span className='absolute bottom-7 text-[7px] text-white'>{item.estrella}</span>
-		</>
+			<span className={`${sizes[size].circle} inline-block rounded-full bg-white`}></span>
+			<span className={`absolute bottom-[${bottom}] text-[${sizes[size].textSize}] text-white`}>{item.estrella}</span>
+		</span>
 	)
 }
 
