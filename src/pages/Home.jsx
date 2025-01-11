@@ -68,8 +68,10 @@ const Home = () => {
 							item={{}}
 						/>
 					</TextTitle>
-					<LogoCarousel />
-					<LogoCarousel />
+					{/* Hacer petición a API, obtener imagenes y particionar los
+					logos entre el número de carruseles */}
+					<LogoCarousel direction='left' />
+					<LogoCarousel direction='right'/>
 				</>
 			</Section>
 

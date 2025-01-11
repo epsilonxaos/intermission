@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useEffect, useRef } from 'react'
 
 // Asume que tienes estos logos en tu carpeta public/
@@ -14,9 +12,9 @@ const logos = [
 	'/clientes/logo6.png',
 ]
 
-export default function LogoCarousel() {
+export default function LogoCarousel({ direction = 'left' }: { direction: 'left' | 'right' }) {
 	const carouselRef = useRef<HTMLDivElement>(null)
-
+	const scrollAnimation = { left: 'animate-scrolling-left', right: 'animate-scrolling-right' }
 	useEffect(() => {
 		const carousel = carouselRef.current
 		if (carousel) {
@@ -34,7 +32,7 @@ export default function LogoCarousel() {
 				{/* Contenedor del carrusel */}
 				<div
 					ref={carouselRef}
-					className='animate-scrolling flex'
+					className={`${scrollAnimation[direction]} flex`}
 					style={
 						{
 							'--scroll-width': '0px',

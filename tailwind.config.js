@@ -37,7 +37,8 @@ export default {
 			animation: {
 				'waving-balls': 'wave-balls 2s linear infinite',
 				"fading-in": "fade-in var(--transition-duration, 300ms) ease-out",
-				"scrolling": "scroll var(--animation-duration, 300ms) linear infinite"
+				"scrolling-left": "scroll_left var(--animation-duration, 300ms) linear infinite",
+				"scrolling-right": "scroll_right var(--animation-duration, 300ms) linear infinite",
 			},
 			keyframes: {
 				"wave-balls": {
@@ -54,9 +55,13 @@ export default {
 						transform: "translateY(0)",
 					},
 				},
-				scroll: {
+				scroll_left: {
 					'0%': { transform: 'translateX(0)' },
 					'100%': { transform: 'translateX(calc(-1 * var(--scroll-width)))' },
+				},
+				scroll_right: {
+					'0%': { transform: 'translateX(calc(-1 * var(--scroll-width)))' },
+					'100%': { transform: 'translateX(0)' },
 				},
 
 			}
