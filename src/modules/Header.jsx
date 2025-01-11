@@ -93,8 +93,8 @@ const Content = () => {
 // Datos
 const headerItems = {
 	items: [
-		{ name: 'Rubros', url: '/rubros', estrella: 4 },
-		{ name: 'About us', url: '/about', estrella: 1 },
+		{ name: 'Rubros', url: '/', estrella: 4 },
+		{ name: 'About us', url: '/about_us', estrella: 1 },
 		{ name: 'Partners', url: '/partners', estrella: 2 },
 		{ name: 'Blog', url: '/blog', estrella: 4 },
 		{ name: 'Contact', url: '/contact', estrella: 1 },

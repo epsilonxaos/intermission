@@ -1,4 +1,4 @@
-import About_us from '@pages/Abous_us'
+import About_us from '@pages/About_us'
 import Home from '@pages/Home'
 import { Route, Switch } from 'wouter'
 
