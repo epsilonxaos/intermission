@@ -62,8 +62,8 @@ export type TTextSpecial = TTexts & {
 export type TComponent = Partial<TContentReact>
 
 export type TItem4CircleDecoration = {
-	item: { name: string; url: string; estrella: number }
-	size: string
-	bottom: string
-	margin: string
+	item?: { name: string; url: string; estrella: number }
+	size?: string
+	bottom?: string
+	margin?: string
 }

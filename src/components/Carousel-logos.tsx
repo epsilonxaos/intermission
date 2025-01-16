@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
+
 
 // Asume que tienes estos logos en tu carpeta public/
 // Función para tomar todas las imagenes dentro de "logos" o donde estén estos
@@ -100,8 +101,8 @@ export const Image = ({
 }: {
 	src: string
 	alt: string
-	width: number
-	height: number
+	width?: number
+	height?: number
 	objectFit: React.CSSProperties['objectFit']
 	className?: string
 }) => {
