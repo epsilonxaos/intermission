@@ -14,6 +14,13 @@
 	}
 }
 
+.dev-cnt {
+	border: 2px solid #f00;
+
+}
+.dev-icon {
+	background-image: url("/imgs/rubros/icon_Desarrollos_Inmobiliarios.svg")
+}
 
 body,
 html {
