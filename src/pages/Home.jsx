@@ -52,47 +52,9 @@ const Home = () => {
 			</Section>
 
 			<Section>
-				<>
-					<TextTitle className='self-start pb-5 sm:self-end'>
-						Rubros
-						<Adorno_circulo_item
-							size='lg-sz'
-							item={{}}
-						/>
-					</TextTitle>
-					<div className='flex w-full flex-wrap items-center justify-between gap-0'>
-						<div className='dev-cnt hidden w-full sm:block'>TIMELINE</div>
-						<div className='flex flex-grow flex-row gap-3 sm:w-4/12'>
-							{/* <svg
-								className='fil-wwhite dev-cnt max-h-[100px] w-full max-w-[100px]'
-								style={{
-									backgroundImage: "url('/imgs/rubros/icon_Desarrollos_Inmobiliarios.svg')",
-								}}>
-								Contenido
-							</svg> */}
-							<Image
-								className='dev-cnt mt-2 max-h-[100px] w-full max-w-[100px] bg-white'
-								src={`/imgs/rubros/icon_${rubros[2].docus}.svg`}
-								alt={`Cliente `}
-								objectFit='contain'
-							/>
-							<div className='flex flex-col gap-2'>
-								<TextSpecial className='text-left text-base font-bold sm:text-xl lg:text-3xl'>{`${rubros[2].name}`}</TextSpecial>
-								<TextSubcontent className='text-left sm:text-sm'>
-									<span className='dev-cnt h-[18px] w-[18px]'>➡️</span>See More
-								</TextSubcontent>
-							</div>
-						</div>
-						<Image
-							className='min-w-[300px] flex-grow sm:w-8/12'
-							src={`/imgs/rubros/img_${rubros[2].docus}.png`}
-							alt={`Cliente `}
-							objectFit='contain'
-						/>
-					</div>
-				</>
+				<RubrosCarrusel rubros={rubros} />
+				{/* <Test images={logos} /> */}
 			</Section>
-
 			<Section className={'sm:gap-y-15 gap-y-10'}>
 				<>
 					<TextTitle className='self-start sm:self-end'>
@@ -109,10 +71,7 @@ const Home = () => {
 				</>
 			</Section>
 
-			<Section>
-				<RubrosCarrusel rubros={rubros} />
-				{/* <Test images={logos} /> */}
-			</Section>
+		
 			<Footer />
 		</Main_screen>
 	)
