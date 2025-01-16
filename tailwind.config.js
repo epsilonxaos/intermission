@@ -5,10 +5,11 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				main: "#F7F7F7",
-				"secon-red": "#D70000",
-				"secon-blue": "#003484",
-				"secon-green": "#00704F",
+				main: "#FFFFFF",
+				"secon-r": "#D70000",
+				"secon-b": "#003484",
+				"secon-g": "#00704F",
+				"extra": "#5C8BD5"
 			},
 			fontFamily: {
 				itc: ["ITC Berkeley Oldstyle Std", "sans-serif"],
@@ -26,8 +27,8 @@ export default {
 				footer: "640px",
 			},
 			backgroundImage: (theme) => ({
-				"hero-content": "url('/imgs/fondo_circulo.png')",
-				"hero-animation": "url('/imgs/Animacion_Intermission.gif')",
+				"hero-content-home": "url('/imgs/fondo_circulo_1.png')",
+				"hero-animation-home": "url('/imgs/Animacion_Intermission.gif')",
 				"footer-animation": "url('/imgs/.png')",
 				"main-background": "url('/imgs/fondo_negro.png')",
 			}),

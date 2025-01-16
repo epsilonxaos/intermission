@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import Adorno_circulo_item from '@components/circle_decoration'
 
+import { useEffect, useState } from 'react'
 
 const Header = () => {
 	return (
 		<nav
-			className='animate-fading-in absolute flex w-full justify-center'
+			className='absolute flex w-full animate-fading-in justify-center'
 			style={{
 				'--transition-duration': '1000ms',
 				'--translateY-initial': '-30px',
@@ -43,9 +44,9 @@ const Content = () => {
 
 	return (
 		<div
-			className={`${hamburgerMenuStatus && 'h-fit flex-wrap'} max-w-navbar fixed inset-y-5 flex h-16 w-full items-center justify-center bg-[#0D3381] bg-opacity-10 backdrop-blur-md md:rounded-full`}>
+			className={`${hamburgerMenuStatus && 'h-fit flex-wrap'} fixed inset-y-5 flex h-16 w-full max-w-navbar items-center justify-center bg-[#0D3381] bg-opacity-10 backdrop-blur-md md:rounded-full`}>
 			<ul
-				className={`text-main flex h-16 w-full items-center justify-between px-8 transition-all hover:bg-[#0D3381] hover:bg-opacity-30 sm:justify-evenly sm:px-0`}>
+				className={`flex h-16 w-full items-center justify-between px-8 text-main transition-all hover:bg-[#0D3381] hover:bg-opacity-30 sm:justify-evenly sm:px-0`}>
 				<Bolitas />
 				<ButtonHamburgerMenu statusAndSet={[hamburgerMenuStatus, setHamburgerMenuStatus]} />
 
@@ -58,20 +59,12 @@ const Content = () => {
 							type={'menu'}
 						/>
 					))}
-				{/* items.map(item => (
-						<li
-							key={item.name}
-							className='hidden sm:block'>
-							<a href={item.url}>{item.name} </a>
-							<Adorno_link item={item} />
-						</li>
-					))} */}
 			</ul>
 
 			{/* Elemento desplegable del menú */}
 			{hamburgerMenuStatus && (
 				<ul
-					className='text-main animate-fading-in w-full flex-col bg-[#0D3381] bg-opacity-15 py-4 transition-all hover:bg-[#0D3381] hover:bg-opacity-30'
+					className='w-full animate-fading-in flex-col bg-[#0D3381] bg-opacity-15 py-4 text-main transition-all hover:bg-[#0D3381] hover:bg-opacity-30'
 					style={{
 						'--transition-duration': '300ms',
 						'--translateY-initial': '-10px',
@@ -85,20 +78,6 @@ const Content = () => {
 					))}
 				</ul>
 			)}
-			{/* {hamburgerMenuStatus && (
-				// pt-4
-				<ul className='text-main animate-fade-in w-full flex-col bg-[#0D3381] bg-opacity-15 py-4 transition-all hover:bg-[#0D3381] hover:bg-opacity-30'>
-					{items.map(item => (
-						// bg-[#0D3381] bg-opacity-15
-						<li
-							key={item.name}
-							className='animate-fade-in relative py-3 text-center transition-all delay-100 hover:bg-[#0D3381] hover:bg-opacity-30'>
-							<a href={item.url}>{item.name} </a>
-							<Adorno_link item={item} />
-						</li>
-					))}
-				</ul>
-			)} */}
 		</div>
 	)
 }
@@ -142,10 +121,28 @@ const ItemComponent = ({ item, type }) => {
 const Bolitas = () => {
 	return (
 		<div className='flex gap-1'>
+			<Adorno_circulo_item
+				size='lg-sz'
+				margin='mx-0'
+			/>
+			<Adorno_circulo_item
+				size='lg-sz'
+				margin='mx-0'
+			/>
+			<Adorno_circulo_item
+				size='lg-sz'
+				margin='mx-0'
+			/>
+			<Adorno_circulo_item
+				size='lg-sz'
+				margin='mx-0'
+			/>
+
+			{/* <div className='bolita'>*</div>
+			<div className='bolita' style={{ opacity: 0.01 }}>*</div>
 			<div className='bolita'>*</div>
 			<div className='bolita'>*</div>
-			<div className='bolita'>*</div>
-			<div className='bolita'>*</div>
+			<div className='bolita'>*</div> */}
 		</div>
 	)
 }
@@ -183,23 +180,5 @@ const ButtonHamburgerMenu = ({ statusAndSet }) => {
 // 		</div>
 // 	)
 // }
-
-export const Adorno_circulo_item = ({ item, size = 'sm-sz', bottom = '8px', margin = 'mx-1' }) => {
-	const sizes = {
-		'sm-sz': { textSize: '7px', circle: 'h-1 w-1' },
-		'md-sz': { textSize: '9px', circle: 'h-2 w-2' },
-		'lg-sz': { textSize: '12px', circle: 'h-3 w-3' },
-	}
-
-	return (
-		<span className={`relative ${margin} inline-block`}>
-			{/* <span className='inline-block h-1 w-1 rounded-full bg-white text-right text-xs leading-none text-white'> */}
-			<span className={`${sizes[size].circle} inline-block rounded-full bg-white`}></span>
-			<span className={`absolute bottom-[${bottom}] text-[${sizes[size].textSize}] text-white`}>
-				{item.estrella ?? ''}
-			</span>
-		</span>
-	)
-}
 
 export default Header
