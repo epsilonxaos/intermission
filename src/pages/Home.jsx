@@ -20,7 +20,7 @@ const Home = () => {
 		<Main_screen>
 			{/* Debería ir por defecto el HEADER y FOOTER? */}
 			<Header />
-			<Hero />
+			<Hero >A Digital Consultancey Company</Hero>
 			<Section className={'gap-y-20'}>
 				<>
 					<TextContent className='max-w-80 self-start'>
@@ -51,17 +51,17 @@ const Home = () => {
 				</>
 			</Section>
 
-			<Section>
+			<Section className={'sm:gap-y-15 gap-y-10'}>
 				<RubrosCarrusel rubros={rubros} />
 				{/* <Test images={logos} /> */}
 			</Section>
+
 			<Section className={'sm:gap-y-15 gap-y-10'}>
 				<>
 					<TextTitle className='self-start sm:self-end'>
 						Clientes
 						<Adorno_circulo_item
 							size='lg-sz'
-							item={{}}
 						/>
 					</TextTitle>
 					{/* Hacer petición a API, obtener imagenes y particionar los

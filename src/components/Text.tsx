@@ -25,12 +25,12 @@ export const TextContent = (opt: TTexts) => {
 // base:12 => 16
 export const TextSubcontent = (opt: TTexts) => {
 	const { children, className } = opt
-	return <span className={twMerge('text-center text-xs text-main sm:text-base', className)}>{children}</span>
+	return <p className={twMerge('text-xs text-main sm:text-base', className)}>{children}</p>
 }
 
-// base:20 => 52
+// base:20 => 30 => 52
 
 export const TextSpecial = (opt: TTexts) => {
 	const { children, className } = opt
-	return <h1 className={twMerge('text-xl text-main sm:text-[30px] lg:text-[52px]', className)}>{children}</h1>
+	return <article className={twMerge('text-xl text-main sm:text-[30px] lg:text-[52px]', className)}>{children}</article>
 }

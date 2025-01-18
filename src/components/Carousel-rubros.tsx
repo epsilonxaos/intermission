@@ -29,9 +29,6 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 		}
 
         if (timelineRef.current) { 
-            const timelineWidth = timelineRef.current.offsetWidth
-            console.log(timelineWidth);
-            
             const progress = ((currentIndex + 1) / rubros.length) * 100
             timelineRef.current.style.setProperty('--progress', `${progress}%`)
         }
@@ -39,39 +36,55 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 
 	return (
 		<>
-			<TextTitle className='self-start pb-5 sm:self-end'>
+			<TextTitle className='self-start sm:self-end'>
 				Rubros
 				<Adorno_circulo_item size='lg-sz' />
 			</TextTitle>
 			<div className='flex w-full flex-wrap'>
                 <div className='dev-cnt hidden w-full sm:block'>
                     {/* PROBANDO */}
-                    <div
-                        ref={timelineRef}
-                        className='relative flex dev-cnt  py-2'
+                    <div ref={timelineRef}
+                        className='relative flex dev-cnt justify-around py-8'
                         style={{'--progress': '0%'} as React.CSSProperties}>
-                        <div 
+                            <svg className="absolute top-0 left-0 w-full h-full" style={{ zIndex: 1 }}>
+                                <polyline
+                                    points={rubros.map((_, index) => 
+                                    `${(index / (rubros.length - 1)) * 100},${index % 2 === 0 ? '25' : '75'}`
+                                    ).join(' ')}
+                                    fill="none"
+                                    stroke="#3B82F6"
+                                    strokeWidth="2"
+                                    vectorEffect="non-scaling-stroke"
+                                    strokeDasharray="1000"
+                                    strokeDashoffset="1000"
+                                    style={{
+                                        strokeDashoffset: `calc(1000 - var(--progress) * 10)`,
+                                        transition: 'stroke-dashoffset 0.3s ease-in-out'
+                                    }}
+                                />
+                            </svg>
+                        {/* <div 
                             className='flex justify-around absolute top-1/2 left-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out'
                             style={{
                                 width: 'var(--progress)',
                                 transform: 'translateY(-50%)',
                             }}>
-                                {rubros.map((_, index) => (
-                                    // Pares para arriba, impares para abajo
-                                    <button
-                                        key={index}
-                                        className={`relative h-[10px] w-[10px] rounded-full transition-colors duration-200 ${
-                                            index <= currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-                                        }`}
-                                        
-                                        style={{
-                                            transform: `translateY(${index % 2 === 0 ? '-10px' : '10px'})`,
-                                            }}
-                                        onClick={() => setCurrentIndex(index)}
-                                        aria-label={`Ver rubro ${index + 1}`}
-                                    />
-                                ))}
-                        </div>
+                        </div> */}
+                            {rubros.map((_, index) => (
+                                // Pares para arriba, impares para abajo
+                                <button
+                                    key={index}
+                                    className={`relative h-[10px] w-[10px] rounded-full transition-colors duration-200 ${
+                                        index <= currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+                                    }`}
+                                    
+                                    style={{
+                                        transform: `translateY(${index % 2 === 0 ? '-14px' : '6px'})`,
+                                        }}
+                                    onClick={() => setCurrentIndex(index)}
+                                    aria-label={`Ver rubro ${index + 1}`}
+                                />
+                            ))}
                     </div>{/* FIN PROBANDO */}
 
 
@@ -105,7 +118,7 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 							style={{ scrollSnapAlign: 'start' }}>
 							<div className='flex flex-grow flex-row gap-3 sm:w-4/12'>
 								<Image
-									className='dev-cnt max-h-[100px] w-full max-w-[100px] bg-white'
+									className='max-h-[100px] w-full max-w-[100px]'
 									src={`/imgs/rubros/icon_${rubro.docus}.svg`}
 									alt={`Icono de ${rubro.name}`}
 									objectFit='cover'
@@ -114,8 +127,12 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 									<TextSpecial className='text-left text-base font-bold sm:text-xl lg:text-3xl'>
 										{rubro.name}
 									</TextSpecial>
-									<TextSubcontent className='text-left sm:text-sm'>
-										<span className='dev-cnt h-[18px] w-[18px]'>➡️</span>See More
+                                    <TextSubcontent className='dev-cnt text-left cursor-pointer align-text-bottom text-see-more sm:text-sm'>
+                                        <Image
+                                            className=' mr-2 inline-block h-[18px] w-[18px]'
+                                            src={`/imgs/icon_Flecha_Derecha.svg`}
+                                            alt={`Icono para más información sobre ${rubro.name}`}
+                                            objectFit='contain'/>See More
 									</TextSubcontent>
 								</div>
 							</div>

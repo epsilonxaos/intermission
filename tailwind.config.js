@@ -9,7 +9,7 @@ export default {
 				"secon-r": "#D70000",
 				"secon-b": "#003484",
 				"secon-g": "#00704F",
-				"extra": "#5C8BD5"
+				"see-more": "#5C8BD5"
 			},
 			fontFamily: {
 				itc: ["ITC Berkeley Oldstyle Std", "sans-serif"],

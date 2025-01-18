@@ -1,11 +1,14 @@
-import Adorno_circulo_item from '@components/circle_decoration'
+import Adorno_circulo_item from '@components/circle_decoration';
 
-import { useEffect, useState } from 'react'
+
+
+import { useEffect, useState } from 'react';
+
 
 const Header = () => {
 	return (
 		<nav
-			className='absolute flex w-full animate-fading-in justify-center'
+			className='absolute z-50 flex w-full animate-fading-in justify-center'
 			style={{
 				'--transition-duration': '1000ms',
 				'--translateY-initial': '-30px',
@@ -44,7 +47,7 @@ const Content = () => {
 
 	return (
 		<div
-			className={`${hamburgerMenuStatus && 'h-fit flex-wrap'} fixed inset-y-5 flex h-16 w-full max-w-navbar items-center justify-center bg-[#0D3381] bg-opacity-10 backdrop-blur-md md:rounded-full`}>
+			className={`${hamburgerMenuStatus && 'h-fit flex-wrap'} fixed flex h-16 w-full max-w-navbar items-center justify-center bg-[#0D3381] bg-opacity-10 backdrop-blur-md sm:inset-y-5 md:rounded-full`}>
 			<ul
 				className={`flex h-16 w-full items-center justify-between px-8 text-main transition-all hover:bg-[#0D3381] hover:bg-opacity-30 sm:justify-evenly sm:px-0`}>
 				<Bolitas />
