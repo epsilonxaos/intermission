@@ -1,5 +1,4 @@
 import { ButtonForLink } from '@components/Button'
-import { Image } from '@components/Carousel-logos'
 import Main_screen from '@components/Main_screen'
 import Section from '@components/Section'
 import { TextContent, TextSubcontent, TextTitle } from '@components/Text'

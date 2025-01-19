@@ -1,10 +1,8 @@
-import { twMerge } from 'tailwind-merge';
-
-
+import { twMerge } from 'tailwind-merge'
 
 import type { TButto4Link, TButtonParams } from '#types/main'
 
-import { Image } from './Carousel-logos'
+import { Image } from './Image'
 import { TextSubcontent } from './Text'
 
 export const Button = (opt: TButtonParams) => {

@@ -1,19 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react'
 
+import { Image } from './Image'
 
 // Asume que tienes estos logos en tu carpeta public/
 // Función para tomar todas las imagenes dentro de "logos" o donde estén estos
 // Así se podría modularizar. Pudiendo tener 2,3 o cuantas filas se quieran
-const logos = [
-	'/clientes/logo1.png',
-	'/clientes/logo2.png',
-	'/clientes/logo3.png',
-	'/clientes/logo4.png',
-	'/clientes/logo5.png',
-	'/clientes/logo6.png',
-]
 
-export default function LogoCarousel({ direction = 'left' }: { direction: 'left' | 'right' }) {
+export default function LogoCarousel({ logos, direction = 'left' }: { direction: 'left' | 'right'; logos: string[] }) {
 	const carouselRef = useRef<HTMLDivElement>(null)
 	const scrollAnimation = { left: 'animate-scrolling-left', right: 'animate-scrolling-right' }
 	useEffect(() => {
@@ -87,33 +80,5 @@ export default function LogoCarousel({ direction = 'left' }: { direction: 'left'
 				{/* <div className='absolute right-0 top-0 h-full w-56 bg-gradient-to-l from-black to-transparent mix-blend-multiply'></div> */}
 			</div>
 		</div>
-	)
-}
-
-// COMPONENTE DE IMAGEN
-export const Image = ({
-	src,
-	alt,
-	width,
-	height,
-	objectFit,
-	className,
-}: {
-	src: string
-	alt: string
-	width?: number
-	height?: number
-	objectFit: React.CSSProperties['objectFit']
-	className?: string
-}) => {
-	return (
-		<img
-			src={src}
-			alt={alt}
-			width={width}
-			height={height}
-			style={{ objectFit }}
-			className={className}
-		/>
 	)
 }

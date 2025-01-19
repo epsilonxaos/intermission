@@ -1,5 +1,5 @@
 import { ButtonForLink } from '@components/Button'
-import { Image } from '@components/Carousel-logos'
+import { Image } from '@components/Image'
 import { TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
 

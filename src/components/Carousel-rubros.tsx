@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { ButtonForLink } from './Button'
-// import { Adorno_circulo_item, TextSpecial, TextSubcontent, TextTitle } from '@/components/ui/text'
-import { Image } from './Carousel-logos'
+import { Image } from './Image'
 import { TextSpecial, TextSubcontent, TextTitle } from './Text'
 import Adorno_circulo_item from './circle_decoration'
 
