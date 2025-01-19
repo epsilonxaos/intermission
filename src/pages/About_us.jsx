@@ -7,6 +7,7 @@ import Adorno_circulo_item from '@components/circle_decoration'
 import Footer from '@modules/Footer'
 import Header from '@modules/Header'
 import { Hero } from '@modules/Hero'
+import Team_AboutUs from '@modules/about_us_TEAM'
 
 const About_us = () => {
 	return (
@@ -41,66 +42,7 @@ const About_us = () => {
 				/>
 			</Hero>
 			<Section className={'sm:gap-y-15 gap-y-10'}>
-				<TextTitle className='self-start sm:self-end'>
-					TEAM
-					<Adorno_circulo_item size='lg-sz' />
-				</TextTitle>
-				<section className='dev-cnt flex w-full flex-col justify-around space-y-10 sm:flex-row sm:space-y-0'>
-					{/* AQUI CARRUSEL */}
-					<article className='w-full sm:w-3/12'>
-						<Image
-							className='mb-4 w-full bg-center'
-							src={`/team/team1.png`}
-							alt={`Persona del equipo de Intermission`}
-							objectFit='cover'
-						/>
-						<p className='text-left sm:text-center'>
-							<TextTitle className='font-bold'>César Sosa</TextTitle>
-							<TextSubcontent className='mb-4'>Director Comercial</TextSubcontent>
-							<TextSubcontent>
-								In a world where disorder and complexity are the norm, <strong>Intermission</strong> emerges as the
-								necessary strategic pause
-							</TextSubcontent>
-						</p>
-					</article>
-					<article className='w-full sm:w-3/12'>
-						<Image
-							className='mb-4 w-full bg-center'
-							src={`/team/team1.png`}
-							alt={`Persona del equipo de Intermission`}
-							objectFit='cover'
-						/>
-						<p className='text-left sm:text-center'>
-							<TextTitle className='font-bold'>César Sosa</TextTitle>
-							<TextSubcontent className='mb-4'>Director Comercial</TextSubcontent>
-							<TextSubcontent>
-								In a world where disorder and complexity are the norm, <strong>Intermission</strong> emerges as the
-								necessary strategic pause
-							</TextSubcontent>
-						</p>
-					</article>
-					<article className='w-full sm:w-3/12'>
-						<Image
-							className='mb-4 w-full bg-center'
-							src={`/team/team1.png`}
-							alt={`Persona del equipo de Intermission`}
-							objectFit='cover'
-						/>
-						<p className='text-left sm:text-center'>
-							<TextTitle className='font-bold'>César Sosa</TextTitle>
-							<TextSubcontent className='mb-4'>Director Comercial</TextSubcontent>
-							<TextSubcontent>
-								In a world where disorder and complexity are the norm, <strong>Intermission</strong> emerges as the
-								necessary strategic pause
-							</TextSubcontent>
-						</p>
-					</article>
-				</section>
-				<ButtonForLink
-					text='Start'
-					linkTo='/' //Aquí o desde onclick
-					infoFor={'Intermission'}
-				/>
+				<Team_AboutUs />
 			</Section>
 			<Footer />
 		</Main_screen>
