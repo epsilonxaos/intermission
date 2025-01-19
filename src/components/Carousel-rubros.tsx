@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { ButtonForLink } from './Button'
 // import { Adorno_circulo_item, TextSpecial, TextSubcontent, TextTitle } from '@/components/ui/text'
 import { Image } from './Carousel-logos'
 import { TextSpecial, TextSubcontent, TextTitle } from './Text'
@@ -16,8 +17,8 @@ interface RubrosCarruselProps {
 
 const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 	const [currentIndex, setCurrentIndex] = useState(0)
-    const carruselRef = useRef<HTMLDivElement>(null)
-    const timelineRef = useRef<HTMLDivElement>(null)
+	const carruselRef = useRef<HTMLDivElement>(null)
+	const timelineRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		if (carruselRef.current) {
@@ -28,11 +29,11 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 			})
 		}
 
-        if (timelineRef.current) { 
-            const progress = ((currentIndex + 1) / rubros.length) * 100
-            timelineRef.current.style.setProperty('--progress', `${progress}%`)
-        }
-    }, [currentIndex, rubros.length])
+		if (timelineRef.current) {
+			const progress = ((currentIndex + 1) / rubros.length) * 100
+			timelineRef.current.style.setProperty('--progress', `${progress}%`)
+		}
+	}, [currentIndex, rubros.length])
 
 	return (
 		<>
@@ -41,65 +42,66 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 				<Adorno_circulo_item size='lg-sz' />
 			</TextTitle>
 			<div className='flex w-full flex-wrap'>
-                <div className='dev-cnt hidden w-full sm:block'>
-                    {/* PROBANDO */}
-                    <div ref={timelineRef}
-                        className='relative flex dev-cnt justify-around py-8'
-                        style={{'--progress': '0%'} as React.CSSProperties}>
-                            <svg className="absolute top-0 left-0 w-full h-full" style={{ zIndex: 1 }}>
-                                <polyline
-                                    points={rubros.map((_, index) => 
-                                    `${(index / (rubros.length - 1)) * 100},${index % 2 === 0 ? '25' : '75'}`
-                                    ).join(' ')}
-                                    fill="none"
-                                    stroke="#3B82F6"
-                                    strokeWidth="2"
-                                    vectorEffect="non-scaling-stroke"
-                                    strokeDasharray="1000"
-                                    strokeDashoffset="1000"
-                                    style={{
-                                        strokeDashoffset: `calc(1000 - var(--progress) * 10)`,
-                                        transition: 'stroke-dashoffset 0.3s ease-in-out'
-                                    }}
-                                />
-                            </svg>
-                        {/* <div 
+				<div className='dev-cnt hidden w-full sm:block'>
+					{/* PROBANDO */}
+					<div
+						ref={timelineRef}
+						className='dev-cnt relative flex justify-around py-8'
+						style={{ '--progress': '0%' } as React.CSSProperties}>
+						<svg
+							className='absolute left-0 top-0 h-full w-full'
+							style={{ zIndex: 1 }}>
+							<polyline
+								points={rubros
+									.map((_, index) => `${(index / (rubros.length - 1)) * 100},${index % 2 === 0 ? '25' : '75'}`)
+									.join(' ')}
+								fill='none'
+								stroke='#3B82F6'
+								strokeWidth='2'
+								vectorEffect='non-scaling-stroke'
+								strokeDasharray='1000'
+								strokeDashoffset='1000'
+								style={{
+									strokeDashoffset: `calc(1000 - var(--progress) * 10)`,
+									transition: 'stroke-dashoffset 0.3s ease-in-out',
+								}}
+							/>
+						</svg>
+						{/* <div 
                             className='flex justify-around absolute top-1/2 left-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out'
                             style={{
                                 width: 'var(--progress)',
                                 transform: 'translateY(-50%)',
                             }}>
                         </div> */}
-                            {rubros.map((_, index) => (
-                                // Pares para arriba, impares para abajo
-                                <button
-                                    key={index}
-                                    className={`relative h-[10px] w-[10px] rounded-full transition-colors duration-200 ${
-                                        index <= currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-                                    }`}
-                                    
-                                    style={{
-                                        transform: `translateY(${index % 2 === 0 ? '-14px' : '6px'})`,
-                                        }}
-                                    onClick={() => setCurrentIndex(index)}
-                                    aria-label={`Ver rubro ${index + 1}`}
-                                />
-                            ))}
-                    </div>{/* FIN PROBANDO */}
-
+						{rubros.map((_, index) => (
+							// Pares para arriba, impares para abajo
+							<button
+								key={index}
+								className={`relative h-[10px] w-[10px] rounded-full transition-colors duration-200 ${
+									index <= currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+								}`}
+								style={{
+									transform: `translateY(${index % 2 === 0 ? '-14px' : '6px'})`,
+								}}
+								onClick={() => setCurrentIndex(index)}
+								aria-label={`Ver rubro ${index + 1}`}
+							/>
+						))}
+					</div>
+					{/* FIN PROBANDO */}
 
 					<div className='flex justify-around py-4'>
-                        {rubros.map((_, index) => (
-                            // <Adorno_circulo_item key={index} size='lg-sz'/>
-                            <button
+						{rubros.map((_, index) => (
+							// <Adorno_circulo_item key={index} size='lg-sz'/>
+							<button
 								key={index}
 								className={`h-[10px] w-[10px] rounded-full transition-colors duration-200 ${
 									index <= currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-                                }`}
-                                
-                                style={{
-                                    transform: `translateY(${index % 2 === 0 ? '-14px' : '6px'})`,
-                                    }}
+								}`}
+								style={{
+									transform: `translateY(${index % 2 === 0 ? '-14px' : '6px'})`,
+								}}
 								onClick={() => setCurrentIndex(index)}
 								aria-label={`Ver rubro ${index + 1}`}
 							/>
@@ -109,12 +111,12 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 
 				<div
 					ref={carruselRef}
-					className='gap-16 flex w-full flex-col sm:flex-row overflow-x-hidden'
+					className='flex w-full flex-col gap-16 overflow-x-hidden sm:flex-row'
 					style={{ scrollSnapType: 'x mandatory' }}>
 					{rubros.map((rubro, idx) => (
 						<div
 							key={idx}
-							className='flex w-full flex-wrap sm:flex-shrink-0 items-center justify-between gap-4 sm:gap-0'
+							className='flex w-full flex-wrap items-center justify-between gap-4 sm:flex-shrink-0 sm:gap-0'
 							style={{ scrollSnapAlign: 'start' }}>
 							<div className='flex flex-grow flex-row gap-3 sm:w-4/12'>
 								<Image
@@ -127,13 +129,11 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 									<TextSpecial className='text-left text-base font-bold sm:text-xl lg:text-3xl'>
 										{rubro.name}
 									</TextSpecial>
-                                    <TextSubcontent className='dev-cnt text-left cursor-pointer align-text-bottom text-see-more sm:text-sm'>
-                                        <Image
-                                            className=' mr-2 inline-block h-[18px] w-[18px]'
-                                            src={`/imgs/icon_Flecha_Derecha.svg`}
-                                            alt={`Icono para más información sobre ${rubro.name}`}
-                                            objectFit='contain'/>See More
-									</TextSubcontent>
+									<ButtonForLink
+										text='See More'
+										linkTo='/' //Aquí o desde onclick
+										infoFor={rubro.name}
+									/>
 								</div>
 							</div>
 							<Image

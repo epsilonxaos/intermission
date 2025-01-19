@@ -42,6 +42,11 @@ export type TButtonParams = {
 	onClick?: () => void
 }
 
+export type TButto4Link = TButtonParams & {
+	linkTo: string
+	infoFor: string
+}
+
 type TContentReact = {
 	children: ReactNode
 	className?: string
