@@ -19,14 +19,14 @@ const Team_AboutUs = () => {
 						alt={`Persona del equipo de Intermission`}
 						objectFit='cover'
 					/>
-					<p className='text-left sm:text-center'>
+					<div className='text-left sm:text-center'>
 						<TextTitle className='font-bold'>César Sosa</TextTitle>
 						<TextSubcontent className='mb-4'>Director Comercial</TextSubcontent>
 						<TextSubcontent>
 							In a world where disorder and complexity are the norm, <strong>Intermission</strong> emerges as the
 							necessary strategic pause
 						</TextSubcontent>
-					</p>
+					</div>
 				</article>
 				<article className='w-full sm:w-3/12'>
 					<Image
@@ -35,14 +35,14 @@ const Team_AboutUs = () => {
 						alt={`Persona del equipo de Intermission`}
 						objectFit='cover'
 					/>
-					<p className='text-left sm:text-center'>
+					<div className='text-left sm:text-center'>
 						<TextTitle className='font-bold'>César Sosa</TextTitle>
 						<TextSubcontent className='mb-4'>Director Comercial</TextSubcontent>
 						<TextSubcontent>
 							In a world where disorder and complexity are the norm, <strong>Intermission</strong> emerges as the
 							necessary strategic pause
 						</TextSubcontent>
-					</p>
+					</div>
 				</article>
 				<article className='w-full sm:w-3/12'>
 					<Image
@@ -51,14 +51,14 @@ const Team_AboutUs = () => {
 						alt={`Persona del equipo de Intermission`}
 						objectFit='cover'
 					/>
-					<p className='text-left sm:text-center'>
+					<div className='text-left sm:text-center'>
 						<TextTitle className='font-bold'>César Sosa</TextTitle>
 						<TextSubcontent className='mb-4'>Director Comercial</TextSubcontent>
 						<TextSubcontent>
 							In a world where disorder and complexity are the norm, <strong>Intermission</strong> emerges as the
 							necessary strategic pause
 						</TextSubcontent>
-					</p>
+					</div>
 				</article>
 			</section>
 			<ButtonForLink

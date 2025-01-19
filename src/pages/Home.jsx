@@ -1,4 +1,4 @@
-import LogoCarousel, { Image } from '@components/Carousel-logos'
+import LogoCarousel from '@components/Carousel-logos'
 import RubrosCarrusel from '@components/Carousel-rubros'
 import Main_screen from '@components/Main_screen'
 import Section from '@components/Section'
@@ -20,7 +20,7 @@ const Home = () => {
 		<Main_screen>
 			{/* Debería ir por defecto el HEADER y FOOTER? */}
 			<Header />
-			<Hero >A Digital Consultancey Company</Hero>
+			<Hero>A Digital Consultancey Company</Hero>
 			<Section className={'gap-y-20'}>
 				<>
 					<TextContent className='max-w-80 self-start'>
@@ -53,25 +53,27 @@ const Home = () => {
 
 			<Section className={'sm:gap-y-15 gap-y-10'}>
 				<RubrosCarrusel rubros={rubros} />
-				{/* <Test images={logos} /> */}
 			</Section>
 
 			<Section className={'sm:gap-y-15 gap-y-10'}>
 				<>
 					<TextTitle className='self-start sm:self-end'>
 						Clientes
-						<Adorno_circulo_item
-							size='lg-sz'
-						/>
+						<Adorno_circulo_item size='lg-sz' />
 					</TextTitle>
 					{/* Hacer petición a API, obtener imagenes y particionar los
 					logos entre el número de carruseles */}
-					<LogoCarousel direction='left' />
-					<LogoCarousel direction='right' />
+					<LogoCarousel
+						logos={logos}
+						direction='left'
+					/>
+					<LogoCarousel
+						logos={logos}
+						direction='right'
+					/>
 				</>
 			</Section>
 
-		
 			<Footer />
 		</Main_screen>
 	)
