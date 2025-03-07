@@ -1,9 +1,6 @@
 import Adorno_circulo_item from '@components/circle_decoration';
 
-
-
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState } from 'react'
 
 const Header = () => {
 	return (
@@ -25,18 +22,18 @@ const Content = () => {
 	useEffect(() => {
 		setItems(headerItems.items)
 	}, [])
+	const handleResize = () => {
+		if (window.innerWidth > 640) {
+			setHamburgerMenuStatus(false)
+		}
+	}
+	const handleClickOutside = event => {
+		if (!event.target.closest('nav')) {
+			setHamburgerMenuStatus(false)
+		}
+	}
 	// FUNCIONES DE APOYO PARA EL NAVBAR Y EL MENU DE HAMBURGUESA. Si se hace resize o click fuera del menú, se cierra
 	useEffect(() => {
-		const handleResize = () => {
-			if (window.innerWidth > 640) {
-				setHamburgerMenuStatus(false)
-			}
-		}
-		const handleClickOutside = event => {
-			if (!event.target.closest('nav')) {
-				setHamburgerMenuStatus(false)
-			}
-		}
 		window.addEventListener('resize', handleResize)
 		document.addEventListener('click', handleClickOutside)
 		return () => {
@@ -140,12 +137,6 @@ const Bolitas = () => {
 				size='lg-sz'
 				margin='mx-0'
 			/>
-
-			{/* <div className='bolita'>*</div>
-			<div className='bolita' style={{ opacity: 0.01 }}>*</div>
-			<div className='bolita'>*</div>
-			<div className='bolita'>*</div>
-			<div className='bolita'>*</div> */}
 		</div>
 	)
 }
@@ -173,15 +164,5 @@ const ButtonHamburgerMenu = ({ statusAndSet }) => {
 		</div>
 	)
 }
-
-// export const Aaadorno_circulo_item = ({ item }) => {
-// 	return (
-// 		<div className='relative inline-block'>
-// 			{/* <span className='inline-block h-1 w-1 rounded-full bg-white text-right text-xs leading-none text-white'> */}
-// 			<span className='inline-block h-1 w-1 rounded-full bg-white'></span>
-// 			<span className='absolute bottom-3 text-[7px] text-white'>{item.estrella}</span>
-// 		</div>
-// 	)
-// }
 
 export default Header

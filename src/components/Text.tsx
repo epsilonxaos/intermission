@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 
-import type { TTextSpecial, TTexts } from '#types/main'
+import type { TTextAndLink, TTextSpecial, TTexts } from '#types/main'
 
 const Text = (opt: TTexts) => {
 	const { children, className } = opt
@@ -23,7 +23,7 @@ export const TextContent = (opt: TTexts) => {
 // base:12 => 16
 export const TextSubcontent = (opt: TTexts) => {
 	const { children, className } = opt
-	return <p className={twMerge('text-xs text-main sm:text-base', className)}>{children}</p>
+	return <article className={twMerge('text-xs text-main sm:text-base', className)}>{children}</article>
 }
 
 // base:20 => 30 => 52
@@ -31,4 +31,23 @@ export const TextSubcontent = (opt: TTexts) => {
 export const TextSpecial = (opt: TTexts) => {
 	const { children, className } = opt
 	return <article className={twMerge('text-xl text-main sm:text-[30px] lg:text-[52px]', className)}>{children}</article>
+}
+
+export const TextComponent = (opt: TTexts) => {
+	const { children, className } = opt
+	return <p className={className}>{children}</p>
+}
+
+export const TextLinkTo = (opt: TTextAndLink) => {
+	const { children, className, to } = opt
+	return (
+		<a
+			className={className}
+			href={`${to}`}
+			target='_blank'
+			rel='noopener noreferrer'>
+			{children}
+		</a>
+	)
+	// return <a className={twMerge('text-sm text-main sm:text-lg', className)}>{children}</a>
 }

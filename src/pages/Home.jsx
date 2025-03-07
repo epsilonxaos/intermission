@@ -18,8 +18,6 @@ const Home = () => {
 	]
 	return (
 		<Main_screen>
-			{/* Debería ir por defecto el HEADER y FOOTER? */}
-			<Header />
 			<Hero>A Digital Consultancey Company</Hero>
 			<Section className={'gap-y-20'}>
 				<>
@@ -73,8 +71,7 @@ const Home = () => {
 					/>
 				</>
 			</Section>
-
-			<Footer />
+			{/* <Footer /> */}
 		</Main_screen>
 	)
 }
