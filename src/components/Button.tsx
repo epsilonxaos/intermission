@@ -26,20 +26,19 @@ export const ButtonForLink = (opt: TButto4Link) => {
 
 	return (
 		<button
-			className={twMerge('dev-cnt w-fit', className)}
+			className={twMerge('flex items-center flex-row w-fit ', className)}
 			{...{ type }}
-			{...(onClick && { onClick })}>
-			{
-				<TextSubcontent className='align-text-bottom text-see-more sm:text-sm'>
-					<Image
-						className='mr-2 inline-block h-[18px] w-[18px]'
-						src={`/imgs/icon_Flecha_Derecha.svg`}
-						alt={`Icono para más información sobre Intermission`}
-						objectFit='contain'
-					/>
+			{...(onClick && { onClick })}
+			{...(linkTo && { onClick: () => window.location.href = linkTo })}>
+				<Image
+					className='mr-2 inline-block h-[20px] w-[20px]'
+					src={`/imgs/icon_Flecha_Derecha.svg`}
+					alt={`Icono para más información sobre Intermission`}
+					objectFit='contain'
+				/>
+				<TextSubcontent className='text-see-more sm:text-sm'>
 					{text}
 				</TextSubcontent>
-			}
 		</button>
 	)
 }

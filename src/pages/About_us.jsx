@@ -8,7 +8,15 @@ import Header from '@modules/Header'
 import { Hero } from '@modules/Hero'
 import Team_AboutUs from '@modules/about_us_TEAM'
 
+import { useEffect, useState } from 'react'
+import useScreenSize from 'src/util/screenSize'
+
 const About_us = () => {
+	const [teamMembers, setTeamMembers] = useState([{}])
+	const { breakpoint} = useScreenSize()
+	useEffect(() => {
+		setTeamMembers(teamMembersRAW)
+	}, [])
 	return (
 		<Main_screen>
 			<Header />
@@ -41,11 +49,49 @@ const About_us = () => {
 				/>
 			</Hero>
 			<Section className={'sm:gap-y-15 gap-y-10'}>
-				<Team_AboutUs />
+				<Team_AboutUs screenSize={breakpoint} team={teamMembers} />
 			</Section>
-			<Footer />
+			{/* <Footer /> */}
 		</Main_screen>
 	)
 }
 
+const teamMembersRAW = [
+	{
+		name: '1 César Sosa',
+		role: 'Director Comercial',
+		description:
+			'In a world where disorder and complexity are the norm, <strong>Intermission</strong> emerges as the necessary strategic pause.',
+	},
+	{
+		name: '2 César Sosa',
+		role: 'Director Comercial',
+		description:
+			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
+	},
+	{
+		name: '3 César Sosa',
+		role: 'Director Comercial',
+		description:
+			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
+	},
+	{
+		name: '4 César Sosa',
+		role: 'Director Comercial',
+		description:
+			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
+	},
+	{
+		name: '5 César Sosa',
+		role: 'Director Comercial',
+		description:
+			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
+	},
+	{
+		name: '6 César Sosa',
+		role: 'Director Comercial',
+		description:
+			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
+	},
+]
 export default About_us
