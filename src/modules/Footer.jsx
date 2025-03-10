@@ -43,7 +43,7 @@ const Footer = () => {
 			<main className='mx-auto flex w-full max-w-[1430px] flex-col gap-y-8 px-[30px]'>
 				<section className='grid gap-y-3 sm:gap-y-6'>
 					<Image
-						className='h-12 max-w-[325px] sm:h-14 md:h-16'
+						className='h-12 w-full max-w-[325px] sm:h-14 md:h-16'
 						src='/footer/intermission_logo.svg'
 						alt='Logo de Intermission'
 						objectFit='contain'

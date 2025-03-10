@@ -54,22 +54,20 @@ const Home = () => {
 			</Section>
 
 			<Section className={'sm:gap-y-15 gap-y-10'}>
-				<>
-					<TextTitle className='self-start sm:self-end'>
-						Clientes
-						<Adorno_circulo_item size='lg-sz' />
-					</TextTitle>
-					{/* Hacer petición a API, obtener imagenes y particionar los
-					logos entre el número de carruseles */}
-					<LogoCarousel
-						logos={logos}
-						direction='left'
-					/>
-					<LogoCarousel
-						logos={logos}
-						direction='right'
-					/>
-				</>
+				<TextTitle className='self-start sm:self-end'>
+					Clientes
+					<Adorno_circulo_item size='lg-sz' />
+				</TextTitle>
+				{/* Hacer petición a API, obtener imagenes y particionar los
+				logos entre el número de carruseles */}
+				<LogoCarousel
+					logos={logos}
+					direction='left'
+				/>
+				<LogoCarousel
+					logos={logos}
+					direction='right'
+				/>
 			</Section>
 			{/* <Footer /> */}
 		</Main_screen>

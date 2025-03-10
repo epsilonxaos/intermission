@@ -57,6 +57,10 @@ export type TTexts = {
 	className?: string
 }
 
+export type TTextAndLink = TTexts & {
+	to: string
+}
+
 export type TTextSpecial = TTexts & {
 	min?: string
 	med?: string

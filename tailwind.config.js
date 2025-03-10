@@ -6,9 +6,9 @@ export default {
 		extend: {
 			colors: {
 				main: "#FFFFFF",
-				"secon-r": "#D70000",
-				"secon-b": "#003484",
-				"secon-g": "#00704F",
+				"secon-r": "#C92619",
+				"secon-b": "#0D3381",
+				"secon-g": "#006E51",
 				"see-more": "#5C8BD5"
 			},
 			fontFamily: {
@@ -30,7 +30,6 @@ export default {
 				"hero-content-home": "url('/imgs/fondo_circulo_1.png')",
 				"hero-animation-home": "url('/imgs/Animacion_Intermission.gif')",
 				"footer-animation": "url('/imgs/.png')",
-				"main-background": "url('/imgs/fondo_negro.png')",
 			}),
 			transitionDuration: {
 				DEFAULT: "300ms",
