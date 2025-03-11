@@ -8,6 +8,7 @@ import Adorno_circulo_item from './circle_decoration'
 interface Rubro {
 	name: string
 	docus: string
+	linkTo: string
 }
 
 interface RubrosCarruselProps {
@@ -130,7 +131,7 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 									</TextSpecial>
 									<ButtonForLink
 										text='See More'
-										linkTo='/' //Aquí o desde onclick
+										linkTo={rubro.linkTo} //Aquí o desde onclick
 										infoFor={rubro.name}
 									/>
 								</div>

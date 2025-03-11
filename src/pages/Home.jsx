@@ -11,10 +11,18 @@ import { Hero } from '@modules/Hero'
 
 const Home = () => {
 	const rubros = [
-		{ name: 'Desarrollos Inmobiliarios', docus: 'Desarrollos_Inmobiliarios' },
-		{ name: 'Hoteles Boutique', docus: 'Hoteles_Boutique' },
-		{ name: 'Servicios y Productos Tecnológicos', docus: 'Servicios_y_Productos_Tecnologicos' },
-		{ name: 'Tiendas Online', docus: 'Tiendas_Online' },
+		{
+			name: 'Desarrollos Inmobiliarios',
+			docus: 'Desarrollos_Inmobiliarios',
+			linkTo: '/rubros/desarrollo_inmobiliario',
+		},
+		{ name: 'Hoteles Boutique', docus: 'Hoteles_Boutique', linkTo: '/rubros/hoteles_boutique' },
+		{
+			name: 'Servicios y Productos Tecnológicos',
+			docus: 'Servicios_y_Productos_Tecnologicos',
+			linkTo: '/rubros/servicios_productos_tecnologicos',
+		},
+		{ name: 'Tiendas Online', docus: 'Tiendas_Online', linkTo: '/rubros/tiendas_online' },
 	]
 	return (
 		<Main_screen>
