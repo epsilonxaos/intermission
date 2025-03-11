@@ -75,4 +75,5 @@ export type TItem4CircleDecoration = {
 	size?: string
 	bottom?: string
 	margin?: string
+	color?: string
 }
