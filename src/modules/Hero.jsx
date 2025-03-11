@@ -6,9 +6,10 @@ export const Hero = ({ children, textClassName, divClassName }) => {
 		// <div className='min-h-hero bg-hero-content flex flex-col items-center justify-center gap-y-5 bg-cover bg-center'>
 		// OJO ESTE PODRÏA VENIR DESDE PROPS, PARA MODULARIDAD
 		<div
-			className='flex min-h-hero animate-fading-in flex-col items-center justify-center gap-y-5 bg-hero-content-home bg-cover bg-center'
+			className='flex min-h-hero animate-fading-in flex-col items-center justify-center gap-y-5 bg-cover bg-center'
 			style={
 				{
+					backgroundImage: "url('/imgs/fondo_circulo_1.png')"
 					// CUIDADO, SE MEZCLAN LOS ESTILOS
 					// '--transition-duration': '5000ms',
 					// '--translateY-initial': '30px',
