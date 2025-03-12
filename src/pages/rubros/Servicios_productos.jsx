@@ -15,6 +15,7 @@ const logos = [
 const folderData = '/rubros/09 Servicios y productos tecnologicos/'
 
 const dataServiciosYProductos = {
+	contentHeader: "GLUE X",
 	title: 'Servicios y Productos tecnológicos',
 	bannerSrc: `${folderData}banner_inicio.png`,
 	iconSrc: `${folderData}icon_rubro.svg`,

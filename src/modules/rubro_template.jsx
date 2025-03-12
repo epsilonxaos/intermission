@@ -8,15 +8,17 @@ import useScreenSize from 'src/util/screenSize'
 import { twMerge } from 'tailwind-merge'
 
 const RubroTemplate = ({ rubroData }) => {
-	const { title, bannerSrc, iconSrc, colorBgSrc, colorBg, cesData, clientes } = rubroData
+	const { contentHeader = null, title, bannerSrc, iconSrc, colorBgSrc, colorBg, cesData, clientes } = rubroData
 	const { breakpoint } = useScreenSize()
 
 	return (
 		<>
 			{/* Banner */}
 			<Section
-				classBackground='bg-center h-[540px] sm:h-[635px]'
-				styleBG={{ backgroundImage: `url("${bannerSrc}")` }}></Section>
+				classBackground='bg-no-repeat bg-cover bg-center h-[540px] sm:h-[635px]'
+				styleBG={{ backgroundImage: `url("${bannerSrc}")` }}>
+				{contentHeader && contentHeader}
+			</Section>
 
 			{/* INFORMACION */}
 			<Section className='xl:px-0'>
@@ -59,7 +61,7 @@ const RubroTemplate = ({ rubroData }) => {
 					{/* //TODO CAMBIAR A COMPONENTE */}
 					{breakpoint !== 'xs' && (
 						<Image
-							className='max-w-[85px] bg-white fill-white'
+							className='max-w-[85px]'
 							src={iconSrc}
 						/>
 					)}

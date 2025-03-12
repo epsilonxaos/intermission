@@ -26,6 +26,10 @@ export const TextSubcontent = (opt: TTexts) => {
 	return <article className={twMerge('text-xs text-main sm:text-base', className)}>{children}</article>
 }
 
+export const TextSmall = (opt: TTexts) => {
+	const { children, className } = opt
+	return <article className={twMerge("text-[10px]/[14px]  ", className)}>{children}</article>
+}
 // base:20 => 30 => 52
 
 export const TextSpecial = (opt: TTexts) => {

@@ -9,7 +9,7 @@ const Section = (opt: TComponent & { classBackground?: string; styleBG?: React.C
 	return (
 		// BACKGROUND PARA SECCIÓN
 		<BackForSection
-			className={twMerge('', classBackground)}
+			className={twMerge('place-content-center', classBackground)}
 			style={styleBG}>
 			{/* CONTENEDOR */}
 			<div className='mx-auto flex max-w-section flex-col items-center justify-center border-2 border-red-700 py-10 text-center'>
