@@ -12,13 +12,47 @@ const logos = [
 	'/clientes/logo5.png',
 	'/clientes/logo6.png',
 ]
+const folderData = '/rubros/09 Servicios y productos tecnologicos/'
 
 const dataServiciosYProductos = {
 	title: 'Servicios y Productos tecnológicos',
-	iconSrc: `/imgs/rubros/icon_{rubro.docus}.svg`,
-	colorBg: 'secon-b',
-	cesSrc: ['/rubros/servicios/servicios1.jpg', '/rubros/servicios/servicios2.jpg', '/rubros/servicios/servicios3.jpg'],
+	bannerSrc: `${folderData}banner_inicio.png`,
+	iconSrc: `${folderData}icon_rubro.svg`,
+	colorBgSrc: `${folderData}backgroundColor.png`,
+	colorBg: '#003484',
 	clientes: logos,
+	cesData: [
+		{
+			imgSrc: `${folderData}CEs/1.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+		{
+			imgSrc: `${folderData}CEs/2.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+		{
+			imgSrc: `${folderData}CEs/3.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+	],
 }
 
 const Servicios = () => {
@@ -27,9 +61,11 @@ const Servicios = () => {
 		setDataServicios(dataServiciosYProductos)
 	}, [])
 
+	if (!dataServicios) return null
+
 	return (
 		<Main_screen>
-			<RubroTemplate />
+			<RubroTemplate rubroData={dataServicios} />
 		</Main_screen>
 	)
 }

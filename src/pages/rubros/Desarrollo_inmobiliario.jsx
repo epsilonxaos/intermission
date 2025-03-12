@@ -12,17 +12,46 @@ const logos = [
 	'/clientes/logo5.png',
 	'/clientes/logo6.png',
 ]
-
+const folderData = '/rubros/07 Desarrollos Inmobiliarios/'
 const dataDesarrolloInmobiliario = {
 	title: 'Desarrollo Inmobiliario',
-	iconSrc: `/imgs/rubros/icon_{rubro.docus}.svg`,
-	colorBg: 'secon-r',
-	cesSrc: [
-		'/rubros/desarrollo/desarrollo1.jpg',
-		'/rubros/desarrollo/desarrollo2.jpg',
-		'/rubros/desarrollo/desarrollo3.jpg',
-	],
+	bannerSrc: `${folderData}banner_inicio.png`,
+	iconSrc: `${folderData}icon_rubro.svg`,
+	colorBgSrc: `${folderData}backgroundColor.png`,
+	colorBg: '#B62121',
 	clientes: logos,
+	cesData: [
+		{
+			imgSrc: `${folderData}CEs/1.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+		{
+			imgSrc: `${folderData}CEs/2.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+		{
+			imgSrc: `${folderData}CEs/3.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+	],
 }
 
 const Inmobiliario = () => {
@@ -31,9 +60,11 @@ const Inmobiliario = () => {
 		setDataInmobiliario(dataDesarrolloInmobiliario)
 	}, [])
 
+	if (!dataInmobiliario) return null
+
 	return (
 		<Main_screen>
-			<RubroTemplate />
+			<RubroTemplate rubroData={dataInmobiliario} />
 		</Main_screen>
 	)
 }

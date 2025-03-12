@@ -73,13 +73,14 @@ const RubroTemplate = ({ rubroData }) => {
 
 			{/* PROCESOs */}
 			<Section
-				className='min-h-[460px] xl:px-0'
+				classBackground='md:min-h-[460px] place-content-center'
+				className='xl:px-0'
 				styleBG={{ backgroundImage: `url("${colorBgSrc}")` }}>
 				<TextTitle className='mb-10 self-start md:mb-20'>
 					Proceso Total
 					<Adorno_circulo_item size='lg-sz' />
 				</TextTitle>
-				<section className='dev-cnt flex w-full flex-col justify-between gap-y-14 md:flex-row'>
+				<section className='flex w-full flex-col justify-between gap-y-14 md:flex-row'>
 					{/* //EN DUPLAS */}
 					<ContainerForProcess>
 						<TextForProcess>

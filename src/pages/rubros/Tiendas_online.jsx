@@ -12,13 +12,46 @@ const logos = [
 	'/clientes/logo5.png',
 	'/clientes/logo6.png',
 ]
-
+const folderData = '/rubros/08 Tiendas Online/'
 const dataTiendasOnline = {
 	title: 'Tiendas Online',
-	iconSrc: `/imgs/rubros/icon_{rubro.docus}.svg`,
-	colorBg: 'secon-g',
-	cesSrc: ['/rubros/tiendas/tiendas1.jpg', '/rubros/tiendas/tiendas2.jpg', '/rubros/tiendas/tiendas3.jpg'],
+	bannerSrc: `${folderData}banner_inicio.png`,
+	iconSrc: `${folderData}icon_rubro.svg`,
+	colorBgSrc: `${folderData}backgroundColor.png`,
+	colorBg: '#00704F',
 	clientes: logos,
+	cesData: [
+		{
+			imgSrc: `${folderData}CEs/1.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+		{
+			imgSrc: `${folderData}CEs/2.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+		{
+			imgSrc: `${folderData}CEs/3.png`,
+			title: 'Nombre del Hotel',
+			ubicacion: 'Ubicación',
+			Ps: {
+				1: 'Parrafo 1',
+				2: 'Parrafo 2',
+				3: 'Parrafo 3',
+			},
+		},
+	],
 }
 
 const Tiendas = () => {
@@ -27,9 +60,11 @@ const Tiendas = () => {
 		setDataTiendas(dataTiendasOnline)
 	}, [])
 
+	if (!dataTiendas) return null
+
 	return (
 		<Main_screen>
-			<RubroTemplate />
+			<RubroTemplate rubroData={dataTiendas} />
 		</Main_screen>
 	)
 }
