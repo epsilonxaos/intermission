@@ -1,39 +1,55 @@
+import Blog from '@pages/Blog'
 import { twMerge } from 'tailwind-merge'
 
 import { useState } from 'react'
 
 import { Image } from './Image'
-import { TextSmall } from './Text'
+import { TextContent, TextSmall } from './Text'
+import Adorno_circulo_item from './circle_decoration'
 
-const IMG_Hover = ({ children, className, dataToDisplay }: any) => {
+const IMG_Hover = ({ children, className, dataToDisplay, isBlog, whereDisplayPreHover }: any) => {
 	const { imgSrc, title, subtitle, colorOverlay } = dataToDisplay
 	const [isHovering, setIsHovering] = useState(false)
+
 	return (
 		<div
-			className={twMerge('relative flex h-full w-full object-center', className)}
+			className={twMerge('relative flex h-full w-full overflow-hidden', className)}
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}>
-			{/* Cubre el CE, antes del hover */}
-			<Image
-				src={imgSrc}
-				alt='Caso de éxito Intermission'
-				// className='w-full transition-transform duration-300 group-hover:scale-105'
-				className='w-full object-center'
-				objectFit='cover'
-			/>
 			{/* Texto parte inferior, antes del hover */}
-
-			{isHovering ? null : (
-				<div className='absolute bottom-5 left-0 right-0'>
+			{/* SON DOS OPCIONES, El primero por si es blog, el segundo por defecto y si no están haciendo hover */}
+			{isBlog && (
+				<div className={twMerge(`flex mb-3 text-left ${isHovering ? 'invisible' : 'visible'}`, whereDisplayPreHover)}>
+					<TextContent className='min-w-fit'>
+						0{isBlog}
+						<Adorno_circulo_item size='sm-sz' />
+					</TextContent>
+					<article>
+						<TextContent>{title}</TextContent>
+						<TextSmall className=''>{subtitle}</TextSmall>
+					</article>
+				</div>
+			)}
+			{!isHovering && !isBlog && (
+				<div className={twMerge('absolute bottom-5 left-0 right-0', whereDisplayPreHover)}>
 					<TextSmall className=''>
 						<strong>{title}</strong> <br />
 						{subtitle}
 					</TextSmall>
 				</div>
 			)}
+
+			{/* Cubre el CE, antes del hover */}
+			<Image
+				src={imgSrc}
+				alt={isBlog ? 'Imagen referencia del blog Intermission' : 'Caso de éxito Intermission'}
+				className='w-full transition-transform duration-300 group-hover:scale-105'
+				objectFit='cover'
+			/>
+
 			{/* Información que aparece cuando se hace hover */}
 			<div
-				className={`dev-cnt absolute inset-0 flex flex-col items-center justify-center bg-blue-400 p-4 transition-opacity duration-300 ${
+				className={`absolute inset-0 flex flex-col items-center justify-center p-4 transition-opacity duration-300 ${
 					isHovering ? 'opacity-80' : 'opacity-0'
 				}`}
 				style={{ backgroundColor: colorOverlay }}>

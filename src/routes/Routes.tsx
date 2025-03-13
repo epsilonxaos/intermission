@@ -1,4 +1,5 @@
 import About_us from '@pages/About_us'
+import Blog from '@pages/Blog'
 import Home from '@pages/Home'
 import Inmobiliario from '@pages/rubros/Desarrollo_inmobiliario'
 import Hoteles from '@pages/rubros/Hoteles_boutique'
@@ -34,17 +35,15 @@ const Routes = () => {
 					path='/rubros/servicios_productos_tecnologicos'
 					component={Servicios}
 				/>
-				{/* <Route
-					path='/rubros'
-					component={Rubros}
+				<Route
+					path='/blog'
+					component={Blog}
 				/>
+				{/*
+				
 				<Route
 					path='/partners'
 					component={Partners}
-					<Route
-						path='/blog'
-						component={Blog}
-					/> 
 					<Route
 						path='/contact_us'
 						component={Contact}
