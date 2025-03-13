@@ -45,6 +45,7 @@ export type TButtonParams = {
 export type TButto4Link = TButtonParams & {
 	linkTo: string
 	infoFor: string
+	iconType?: '1' | '2'
 }
 
 type TContentReact = {

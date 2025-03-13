@@ -22,23 +22,26 @@ export const Button = (opt: TButtonParams) => {
 }
 
 export const ButtonForLink = (opt: TButto4Link) => {
-	const { text, linkTo, className, type = 'button', onClick } = opt
-
+	const { text, linkTo, iconType = '1', className, type = 'button', onClick } = opt
+	const typeOfIcon = {
+		1: '/imgs/icon_Flecha_Derecha.svg',
+		2: '/imgs/icon_Flecha_derecha_2.svg',
+	}
 	return (
 		<button
-			className={twMerge('flex items-center flex-row w-fit ', className)}
+			className={twMerge('flex w-fit flex-row items-center text-center', className)}
 			{...{ type }}
 			{...(onClick && { onClick })}
-			{...(linkTo && { onClick: () => window.location.href = linkTo })}>
-				<Image
-					className='mr-2 inline-block h-[20px] w-[20px]'
-					src={`/imgs/icon_Flecha_Derecha.svg`}
-					alt={`Icono para más información sobre Intermission`}
-					objectFit='contain'
-				/>
-				<TextSubcontent className='text-see-more sm:text-sm'>
-					{text}
-				</TextSubcontent>
+			{...(linkTo && { onClick: () => (window.location.href = linkTo) })}>
+			<Image
+				className={`mr-2 inline-block ${iconType === '1' ? 'h-[20px] w-[20px]' : 'h-[11px] w-[11px]'}`}
+				src={typeOfIcon[iconType]}
+				alt={`Icono para más información sobre Intermission`}
+				objectFit='contain'
+			/>
+			<TextSubcontent className={`sm:text-sm ${iconType === '1' ? 'text-see-more' : 'text-white'}`}>
+				{text}
+			</TextSubcontent>
 		</button>
 	)
 }
