@@ -5,7 +5,7 @@ import Section from '@components/Section'
 import { TextContent, TextSpecial, TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
 import Footer from '@modules/Footer'
-import Header from '@modules/Header'
+import Header from '@modules/Header_old'
 import { Hero } from '@modules/Hero'
 
 const Home = () => {
