@@ -24,6 +24,7 @@
 body,
 html {
 	@apply bg-black;
+	font-family: 'Brut Grotesque', sans-serif;
 }
 body {
 	background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url('/imgs/fondo_negro.png');
