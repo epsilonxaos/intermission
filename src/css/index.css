@@ -16,13 +16,16 @@
 
 .dev-cnt {
 	border: 2px solid #f00;
-
 }
 .dev-icon {
-	background-image: url("/imgs/rubros/icon_Desarrollos_Inmobiliarios.svg")
+	background-image: url('/imgs/rubros/icon_Desarrollos_Inmobiliarios.svg');
 }
 
 body,
 html {
-	@apply bg-white;
+	@apply bg-black;
+}
+body {
+	background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url('/imgs/fondo_negro.png');
+	/* @apply bg-black; */
 }
