@@ -1,72 +1,68 @@
+import informationDesk from '@assets/img/home/information_desk.svg'
+import informationMobil from '@assets/img/home/information_mobil.svg'
 import LogoCarousel from '@components/Carousel-logos'
 import RubrosCarrusel from '@components/Carousel-rubros'
+import Container from '@components/Container'
 import Main_screen from '@components/Main_screen'
 import Section from '@components/Section'
 import { TextContent, TextSpecial, TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
-import Footer from '@modules/Footer'
-import Header from '@modules/Header_old'
+import Footer from '@modules/FooterOld'
 import { Hero } from '@modules/Hero'
+
+import { HiOutlineArrowRightCircle } from 'react-icons/hi2'
+import { PiCaretCircleRight } from 'react-icons/pi'
 
 const Home = () => {
 	const rubros = [
 		{
 			name: 'Desarrollos Inmobiliarios',
-			docus: 'Desarrollos_Inmobiliarios',
+			docus: '1',
 			linkTo: '/rubros/desarrollo_inmobiliario',
 		},
-		{ name: 'Hoteles Boutique', docus: 'Hoteles_Boutique', linkTo: '/rubros/hoteles_boutique' },
+		{ name: 'Hoteles Boutique', docus: '4', linkTo: '/rubros/hoteles_boutique' },
 		{
 			name: 'Servicios y Productos Tecnológicos',
-			docus: 'Servicios_y_Productos_Tecnologicos',
+			docus: '2',
 			linkTo: '/rubros/servicios_productos_tecnologicos',
 		},
-		{ name: 'Tiendas Online', docus: 'Tiendas_Online', linkTo: '/rubros/tiendas_online' },
+		{ name: 'Tiendas Online', docus: '3', linkTo: '/rubros/tiendas_online' },
 	]
 	return (
 		<Main_screen>
-			<Hero>A Digital Consultancey Company</Hero>
-			<Section className={'gap-y-20'}>
-				<>
-					<TextContent className='max-w-80 self-start'>
-						Redefiniendo tu estrategia digital a través de la ciencia de datos.
-						<Adorno_circulo_item
-							size='md-sz'
-							item={{ estrella: 1 }}
-						/>
-					</TextContent>
-					<TextContent className='max-w-80 self-end'>
-						<Adorno_circulo_item
-							size='md-sz'
-							margin='mx-3'
-							item={{ estrella: 2 }}
-						/>
-						En el mundo donde el desorden y la complejidad son la norma, Intermission emerge como la pausa estratégica
-						necesaria.
-					</TextContent>
-					<TextContent className='max-w-80 self-center'>
-						Nos Especializamos en crear claridad
-						<Adorno_circulo_item
-							size='md-sz'
-							item={{ estrella: 3 }}
-						/>{' '}
-						<br />a partir del caos, conectando los puntos entre datos dispersos para revelar las oportunidades ocultad
-						que impulsan el crecimiento de tu marca.
-					</TextContent>
-				</>
-			</Section>
+			<Hero>
+				{/* <div className='h-24 w-full bg-hero-animation-home bg sm:w-9/12 lg:w-7/12' /> */}
+				<TextSpecial>A Digital Consultancy Company.</TextSpecial>
+			</Hero>
 
-			<Section className={'sm:gap-y-15 gap-y-10'}>
+			<Container>
+				<img
+					src={informationDesk}
+					alt='Information'
+					className='hidden md:block'
+				/>
+				<img
+					src={informationMobil}
+					alt='Information'
+					className='md:hidden'
+				/>
+
+				<button className='ml-auto mr-0 flex items-center gap-1 text-[#5C8BD5]'>
+					<HiOutlineArrowRightCircle size={18} />
+					See more
+				</button>
+			</Container>
+
+			<Container>
 				<RubrosCarrusel rubros={rubros} />
-			</Section>
+			</Container>
 
 			<Section className={'sm:gap-y-15 gap-y-10'}>
 				<TextTitle className='self-start sm:self-end'>
 					Clientes
 					<Adorno_circulo_item size='lg-sz' />
 				</TextTitle>
-				{/* Hacer petición a API, obtener imagenes y particionar los
-				logos entre el número de carruseles */}
+
 				<LogoCarousel
 					logos={logos}
 					direction='left'
@@ -76,17 +72,18 @@ const Home = () => {
 					direction='right'
 				/>
 			</Section>
-			{/* <Footer /> */}
 		</Main_screen>
 	)
 }
 
 const logos = [
-	'/clientes/logo1.png',
-	'/clientes/logo2.png',
-	'/clientes/logo3.png',
-	'/clientes/logo4.png',
-	'/clientes/logo5.png',
-	'/clientes/logo6.png',
+	'/imgs/clientes/1.svg',
+	'/imgs/clientes/2.svg',
+	'/imgs/clientes/3.svg',
+	'/imgs/clientes/4.svg',
+	'/imgs/clientes/1.svg',
+	'/imgs/clientes/2.svg',
+	'/imgs/clientes/3.svg',
+	'/imgs/clientes/4.svg',
 ]
 export default Home

@@ -3,8 +3,7 @@ import Main_screen from '@components/Main_screen'
 import Section from '@components/Section'
 import { TextContent, TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
-import Footer from '@modules/Footer'
-import Header from '@modules/Header_old'
+import Footer from '@modules/FooterOld'
 import { Hero } from '@modules/Hero'
 import Team_AboutUs from '@modules/about_us_TEAM'
 import useScreenSize from 'src/util/screenSize'
@@ -19,7 +18,6 @@ const About_us = () => {
 	}, [])
 	return (
 		<Main_screen>
-			{/* <Header /> */}
 			<Hero
 				textClassName='flex flex-col gap-4 sm:items-center text-sm sm:text-xl lg:text-xl'
 				divClassName='max-w-[1000px] w-9/12'>
