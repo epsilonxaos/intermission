@@ -96,24 +96,28 @@ const circles = [
 ]
 const CircleAnimation = () => {
 	const duration = 0.5
+	const [hovered, setHovered] = useState(false)
 
 	return (
-		<div className='flex items-center justify-center gap-[1px]'>
+		<div
+			className='flex items-center justify-center gap-[1px]'
+			onMouseEnter={() => setHovered(true)}
+			onMouseLeave={() => setHovered(false)}>
 			{circles.map((c, idx) => (
 				<motion.div
 					key={'circle-header-' + idx}
 					className={twMerge('size-3 rounded-full bg-white', c.className)}
 					initial={{ y: 0 }}
-					animate={{
-						y: [0, -15, 0],
-					}}
-					transition={{
-						repeat: Infinity,
-						repeatDelay: 3,
-						duration: duration * 2,
-						times: [0, 0.5, 1],
-						delay: idx * 0.2, // Genera el efecto de ola
-					}}
+					animate={hovered ? { y: [0, -20, 0] } : { y: 0 }}
+					transition={
+						hovered
+							? {
+									duration: duration * 2,
+									times: [0, 0.5, 1],
+									delay: idx * 0.2,
+								}
+							: {}
+					}
 				/>
 			))}
 		</div>
