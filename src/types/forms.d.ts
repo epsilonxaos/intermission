@@ -4,7 +4,7 @@ import type { THTMLInputTypeAttribute } from './main'
 
 export type TInputParams = {
 	name: string
-	label: string
+	label?: string
 	type?: THTMLInputTypeAttribute
 	className?: string
 	placeholder?: string
