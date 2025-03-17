@@ -3,23 +3,21 @@ import Main_screen from '@components/Main_screen'
 import Section from '@components/Section'
 import { TextContent, TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
-import Footer from '@modules/Footer'
-import Header from '@modules/Header'
+import Footer from '@modules/FooterOld'
 import { Hero } from '@modules/Hero'
 import Team_AboutUs from '@modules/about_us_TEAM'
+import useScreenSize from 'src/util/screenSize'
 
 import { useEffect, useState } from 'react'
-import useScreenSize from 'src/util/screenSize'
 
 const About_us = () => {
 	const [teamMembers, setTeamMembers] = useState([{}])
-	const { breakpoint} = useScreenSize()
+	const { breakpoint } = useScreenSize()
 	useEffect(() => {
 		setTeamMembers(teamMembersRAW)
 	}, [])
 	return (
 		<Main_screen>
-			<Header />
 			<Hero
 				textClassName='flex flex-col gap-4 sm:items-center text-sm sm:text-xl lg:text-xl'
 				divClassName='max-w-[1000px] w-9/12'>
@@ -49,7 +47,10 @@ const About_us = () => {
 				/>
 			</Hero>
 			<Section className={'sm:gap-y-15 gap-y-10'}>
-				<Team_AboutUs screenSize={breakpoint} team={teamMembers} />
+				<Team_AboutUs
+					screenSize={breakpoint}
+					team={teamMembers}
+				/>
 			</Section>
 			{/* <Footer /> */}
 		</Main_screen>

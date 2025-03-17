@@ -1,148 +1,158 @@
-import { Image } from '@components/Image'
-import { TextComponent, TextLinkTo, TextSpecial, TextSubcontent } from '@components/Text'
-import { Link } from 'wouter'
+import Logo from '@assets/img/intermission-logo.svg'
+import LineM from '@assets/img/line-footer-mobil.svg'
+import Line from '@assets/img/line-footer.svg'
+import MBP from '@assets/img/madebypartners.svg'
+import Numero from '@assets/img/numero.svg'
+import Container from '@components/Container'
+import { TextSpecial } from '@components/Text'
+import { twMerge } from 'tailwind-merge'
 
-import { useEffect, useState } from 'react'
-
-import Bg_Image_Background from '../../public/imgs/fondo_negro.png'
-
-const getScreenSize = () => {
-	const width = window.innerWidth
-	if (width < 640) return 'sm'
-	if (width < 768) return 'md'
-	if (width < 1024) return 'lg'
-	if (width < 1280) return 'xl'
-	return '2xl'
-}
+import { useMediaQuery } from 'react-responsive'
 
 const Footer = () => {
-	const [sizeScreen, setSizeScreen] = useState(getScreenSize())
-	useEffect(() => {
-		const handleResize = () => {
-			setSizeScreen(getScreenSize())
-		}
-		window.addEventListener('resize', handleResize)
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [])
+	const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
 	return (
-		<footer
-			style={{ backgroundImage: `url(${Bg_Image_Background})` }}
-			className='-z-50 grid w-full gap-y-4 pt-20 pb-8 text-main'>
-			<div className='w-full overflow-hidden bg-cover sm:hidden'>
-				<Image
-					src='/footer/div_numero.svg'
-					alt='Divisor'
+		<footer className='text-white'>
+			{isMobile && (
+				<img
+					src={LineM}
+					alt='Line footer'
 					className='w-full'
-					objectFit='contain'
 				/>
-			</div>
+			)}
 
-			<main className='mx-auto flex w-full max-w-[1430px] flex-col gap-y-8 px-[30px]'>
-				<section className='grid gap-y-3 sm:gap-y-6'>
-					<Image
-						className='h-12 w-full max-w-[325px] sm:h-14 md:h-16'
-						src='/footer/intermission_logo.svg'
-						alt='Logo de Intermission'
-						objectFit='contain'
+			<Container className='px-[50px]'>
+				<img
+					className='mb-11 w-full max-w-[250px] invert md:max-w-[326px]'
+					src={Logo}
+					alt='Intermission'
+				/>
+				<a
+					className='mb-11 inline-block text-xs'
+					href='mailto:hello@intermission.partners'>
+					hello@intermission.partners
+				</a>
+
+				{isMobile ? <MobilGrid /> : <DeskGrid />}
+			</Container>
+
+			{!isMobile && (
+				<>
+					<img
+						src={Line}
+						alt='Line footer'
+						className='w-full'
 					/>
-					<TextSubcontent>hello@intermission.partners</TextSubcontent>
-				</section>
-				<section className='flex flex-wrap justify-between gap-y-4 sm:flex-row sm:gap-y-6'>
-					<article className='flex w-full max-w-[450px] items-end justify-between'>
-						<TextList>
-							<TextLinkTo
-								className='dev-cnt'
-								to=''>
-								Twitter
-							</TextLinkTo>
-							<TextLinkTo to='https://www.instagram.com/intermission.partners'>Instagram</TextLinkTo>
-							<TextLinkTo to='https://www.facebook.com/Intermission.Partners'>Facebook</TextLinkTo>
-							<TextLinkTo to='https://www.linkedin.com/company/intermissionpartners/'>LinkedIn</TextLinkTo>
-						</TextList>
-						<TextList>
-							<TextComponent>Código</TextComponent>
-						</TextList>
-						<TextList>
-							<TextComponent>Avenida</TextComponent>
-							<TextComponent>Número</TextComponent>
-							<TextComponent>Colonia</TextComponent>
-							<TextComponent>Postal</TextComponent>
-						</TextList>
-						<TextList>
-							<TextComponent>Líbano x 3 - A</TextComponent>
-							<TextComponent>101 - B</TextComponent>
-							<TextComponent>México Nte</TextComponent>
-							<TextComponent>97128</TextComponent>
-						</TextList>
-					</article>
-					<div className='flex flex-grow flex-col justify-between sm:flex-row md:justify-around'>
-						<Image
-							src='/footer/numero.svg'
-							alt='Número de teléfono de Intermission'
-							className='w-full max-w-[340px]'
-							objectFit='contain'
-						/>
-						<article className='relative flex items-end justify-between sm:w-[190px] xl:w-[250px] sm:justify-end'>
-							<div className='grid gap-8'>
-								<TextSpecial className='sm:text-[52px]'>Starts</TextSpecial>
-								<div className='mb-8 flex flex-col gap-2 sm:hidden'>
-									<FooterTermsAndConditions />
-								</div>
-							</div>
-							<Image
-								src='/footer/animacion_footer.gif'
-								alt='Animación de Intermission'
-								className='w-[150px] md:w-full sm:absolute sm:top-[-280px] sm:flex lg:top-[-200px]'
-								objectFit='cover'
-							/>
-						</article>
-					</div>
-				</section>
-			</main>
 
-			<div className='hidden w-full flex-col sm:flex'>
-				<Image
-					src='/footer/div_numero.svg'
-					alt='Divisor'
-					className='mt-8 h-[50px] w-full'
-					objectFit='contain'
-				/>
-				<div className='flex-col px-[50px] sm:flex sm:flex-row sm:items-center sm:justify-between sm:px-[60px]'>
-					<FooterTermsAndConditions />
-				</div>
-			</div>
+					<Container className='!py-7 px-[50px]'>
+						<TermsAndConditions className={'flex-row items-center justify-between'} />
+					</Container>
+				</>
+			)}
 		</footer>
 	)
 }
 
-const FooterTermsAndConditions = () => {
+const MobilGrid = () => {
 	return (
 		<>
-			<TextSubcontent className='text-[10px]'>
-				<TextLinkTo to='terminos-condiciones'>Terms and Conditions</TextLinkTo>
-			</TextSubcontent>
+			<div className='mb-11 flex items-end justify-between text-[10px]'>
+				<SocialMedia />
+				<Address />
+				<div className='hidden sm:block'>
+					<NumeroBullets />
+				</div>
+			</div>
 
-			<TextLinkTo to='https://www.madeby.partners/'>
-				<Image
-					src='/footer/madebypartners.svg'
-					alt='Logo MadeByPartners'
-					className='w-[100px] sm:w-[140px]'
-					objectFit='contain'
-				/>
-			</TextLinkTo>
+			<div className='mb-11 sm:hidden'>
+				<NumeroBullets />
+			</div>
 
-			<TextSubcontent className='text-[10px]'>
-				<TextLinkTo to='politicas-privacidad'>Private politics</TextLinkTo>
-			</TextSubcontent>
+			<TextSpecial className='md:text-[52px]'>Start</TextSpecial>
+
+			<div className='flex'>
+				<TermsAndConditions />
+			</div>
 		</>
 	)
 }
 
-const TextList = ({ children }) => (
-	<TextSubcontent className='z-10 flex flex-col gap-y-1 text-[10px]'>{children}</TextSubcontent>
+const DeskGrid = () => {
+	return (
+		<div className='flex items-end justify-between text-[10px] lg:text-sm'>
+			<SocialMedia />
+			<Address />
+			<NumeroBullets />
+			<TextSpecial className='sm:text-[52px]'>Start</TextSpecial>
+		</div>
+	)
+}
+
+const SocialMedia = () => {
+	return (
+		<ul>
+			<li>
+				<a href='https://twitter.com/IntermissionP'>Twitter</a>
+			</li>
+			<li>
+				<a href='https://www.facebook.com/intermissionpartners'>Facebook</a>
+			</li>
+			<li>
+				<a href='https://www.instagram.com/intermission.partners/'>Instagram</a>
+			</li>
+			<li>
+				<a href='https://www.linkedin.com/company/intermission-partners/'>LinkedIn</a>
+			</li>
+		</ul>
+	)
+}
+
+const Address = () => {
+	return (
+		<div className='grid grid-cols-3 items-end'>
+			<div>
+				<p>Codigo</p>
+			</div>
+			<div>
+				<p>Avenida</p>
+				<p>Numero</p>
+				<p>Colonia</p>
+				<p>Postal</p>
+			</div>
+			<div>
+				<p>Líbano x 3 - A</p>
+				<p>101 - B</p>
+				<p>Mexico Nte</p>
+				<p>97128</p>
+			</div>
+		</div>
+	)
+}
+
+const NumeroBullets = () => (
+	<a href='tel:+529991815368'>
+		<img
+			className='w-full max-w-[195px]'
+			src={Numero}
+			alt='Numero'
+		/>
+	</a>
 )
+
+const TermsAndConditions = ({ className }) => {
+	return (
+		<div className={twMerge('flex flex-col gap-1 text-[10px] md:text-xs', className)}>
+			<p className='order-1'>Terms and conditions</p>
+			<p className='order-2 md:order-3'>Privacy policy</p>
+			<img
+				src={MBP}
+				className='order-3 mt-2 invert md:order-2'
+				width={100}
+				alt='Made By Partners'
+			/>
+		</div>
+	)
+}
 
 export default Footer

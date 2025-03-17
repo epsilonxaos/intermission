@@ -28,13 +28,13 @@ export const TextSubcontent = (opt: TTexts) => {
 
 export const TextSmall = (opt: TTexts) => {
 	const { children, className } = opt
-	return <article className={twMerge("text-[10px]/[14px]  ", className)}>{children}</article>
+	return <article className={twMerge('text-[10px]/[14px]', className)}>{children}</article>
 }
 // base:20 => 30 => 52
 
 export const TextSpecial = (opt: TTexts) => {
 	const { children, className } = opt
-	return <article className={twMerge('text-xl text-main sm:text-[30px] lg:text-[52px]', className)}>{children}</article>
+	return <article className={twMerge('text-xl text-main md:text-3xl', className)}>{children}</article>
 }
 
 export const TextComponent = (opt: TTexts) => {

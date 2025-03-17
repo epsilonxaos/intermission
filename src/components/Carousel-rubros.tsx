@@ -1,9 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { ButtonForLink } from '@components/Button'
+import Adorno_circulo_item from '@components/circle_decoration'
+import { motion } from 'framer-motion'
+import 'swiper/css'
+import { Autoplay } from 'swiper/modules'
 
-import { ButtonForLink } from './Button'
+import { useState } from 'react'
+import { HiOutlineArrowRightCircle } from 'react-icons/hi2'
+import { useMediaQuery } from 'react-responsive'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
 import { Image } from './Image'
-import { TextSpecial, TextSubcontent, TextTitle } from './Text'
-import Adorno_circulo_item from './circle_decoration'
+import { TextSpecial, TextTitle } from './Text'
 
 interface Rubro {
 	name: string
@@ -15,139 +22,140 @@ interface RubrosCarruselProps {
 	rubros: Rubro[]
 }
 
-const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
-	const [currentIndex, setCurrentIndex] = useState(0)
-	const carruselRef = useRef<HTMLDivElement>(null)
-	const timelineRef = useRef<HTMLDivElement>(null)
-
-	useEffect(() => {
-		if (carruselRef.current) {
-			const scrollPosition = currentIndex * carruselRef.current.offsetWidth
-			carruselRef.current.scrollTo({
-				left: scrollPosition,
-				behavior: 'smooth',
-			})
-		}
-
-		if (timelineRef.current) {
-			const progress = ((currentIndex + 1) / rubros.length) * 100
-			timelineRef.current.style.setProperty('--progress', `${progress}%`)
-		}
-	}, [currentIndex, rubros.length])
+type TProgressCircles = {
+	totalSlides: number
+	currentSlide: number
+}
+const ProgressCircles = ({ totalSlides, currentSlide }: TProgressCircles) => {
+	const circles = Array.from({ length: totalSlides }, (_, i) => ({
+		id: i,
+		x: (i / (totalSlides - 1)) * 100,
+		y: i % 2 === 0 ? 80 : 20,
+	}))
 
 	return (
-		<>
-			<TextTitle className='self-start sm:self-end'>
+		<div className='relative mb-6 h-20 w-full'>
+			<svg className='absolute left-0 top-0 h-full w-full'>
+				{circles.map((circle, i) =>
+					i < currentSlide && circles[i] ? (
+						<motion.line
+							key={'circle-progress-' + circle.id}
+							x1={`${circles[i].x}%`}
+							y1={`${circles[i].y}%`}
+							x2={`${circles[i + 1]?.x ?? circles[i].x}%`}
+							y2={`${circles[i + 1]?.y ?? circles[i].y}%`}
+							stroke='white'
+							strokeWidth='2'
+							strokeDasharray='600'
+							strokeDashoffset='600'
+							initial={{ strokeDashoffset: 600 }}
+							animate={{ strokeDashoffset: 0 }}
+							transition={{ duration: 0.5, ease: 'easeOut' }}
+						/>
+					) : null
+				)}
+			</svg>
+
+			{circles.map(circle => (
+				<motion.div
+					key={circle.id}
+					className='absolute size-[12px] rounded-full bg-white'
+					style={{
+						left: `${circle.x - 0.5}%`,
+						top: `${circle.y - 6}%`,
+						transform: 'translate(-49%, -50%)',
+					}}
+					initial={{ scale: 0.8, opacity: 0.5 }}
+					animate={{ scale: circle.id <= currentSlide ? 1 : 0.8, opacity: circle.id <= currentSlide ? 1 : 0.5 }}
+					transition={{ duration: 0.3 }}
+				/>
+			))}
+		</div>
+	)
+}
+
+const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
+	const [currentSlide, setCurrentSlide] = useState(0)
+	const totalSlides = rubros.length
+	const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
+
+	return (
+		<div className='relative w-full'>
+			<TextTitle className='mb-12 self-start sm:self-end'>
 				Rubros
 				<Adorno_circulo_item size='lg-sz' />
 			</TextTitle>
-			<div className='flex w-full flex-wrap'>
-				<div className='dev-cnt hidden w-full sm:block'>
-					{/* PROBANDO */}
-					<div
-						ref={timelineRef}
-						className='dev-cnt relative flex justify-around py-8'
-						style={{ '--progress': '0%' } as React.CSSProperties}>
-						<svg
-							className='absolute left-0 top-0 h-full w-full'
-							style={{ zIndex: 1 }}>
-							<polyline
-								points={rubros
-									.map((_, index) => `${(index / (rubros.length - 1)) * 100},${index % 2 === 0 ? '25' : '75'}`)
-									.join(' ')}
-								fill='none'
-								stroke='#3B82F6'
-								strokeWidth='2'
-								vectorEffect='non-scaling-stroke'
-								strokeDasharray='1000'
-								strokeDashoffset='1000'
-								style={{
-									strokeDashoffset: `calc(1000 - var(--progress) * 10)`,
-									transition: 'stroke-dashoffset 0.3s ease-in-out',
-								}}
-							/>
-						</svg>
-						{/* <div 
-                            className='flex justify-around absolute top-1/2 left-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out'
-                            style={{
-                                width: 'var(--progress)',
-                                transform: 'translateY(-50%)',
-                            }}>
-                        </div> */}
-						{rubros.map((_, index) => (
-							// Pares para arriba, impares para abajo
-							<button
-								key={index}
-								className={`relative h-[10px] w-[10px] rounded-full transition-colors duration-200 ${
-									index <= currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-								}`}
-								style={{
-									transform: `translateY(${index % 2 === 0 ? '-14px' : '6px'})`,
-								}}
-								onClick={() => setCurrentIndex(index)}
-								aria-label={`Ver rubro ${index + 1}`}
-							/>
-						))}
-					</div>
-					{/* FIN PROBANDO */}
 
-					<div className='flex justify-around py-4'>
-						{rubros.map((_, index) => (
-							// <Adorno_circulo_item key={index} size='lg-sz'/>
-							<button
-								key={index}
-								className={`h-[10px] w-[10px] rounded-full transition-colors duration-200 ${
-									index <= currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-								}`}
-								style={{
-									transform: `translateY(${index % 2 === 0 ? '-14px' : '6px'})`,
-								}}
-								onClick={() => setCurrentIndex(index)}
-								aria-label={`Ver rubro ${index + 1}`}
-							/>
-						))}
-					</div>
-				</div>
-
+			{isMobile && (
 				<div
-					ref={carruselRef}
 					className='flex w-full flex-col gap-16 overflow-x-hidden sm:flex-row'
 					style={{ scrollSnapType: 'x mandatory' }}>
 					{rubros.map((rubro, idx) => (
-						<div
-							key={idx}
-							className='flex w-full flex-wrap items-center justify-between gap-4 sm:flex-shrink-0 sm:gap-0'
-							style={{ scrollSnapAlign: 'start' }}>
-							<div className='flex flex-grow flex-row gap-3 sm:w-4/12'>
-								<Image
-									className='max-h-[100px] w-full max-w-[100px]'
-									src={`/imgs/rubros/icon_${rubro.docus}.svg`}
-									alt={`Icono de ${rubro.name}`}
-									objectFit='cover'
-								/>
-								<div className='flex flex-col gap-2'>
-									<TextSpecial className='text-left text-base font-bold sm:text-xl lg:text-3xl'>
-										{rubro.name}
-									</TextSpecial>
-									<ButtonForLink
-										text='See More'
-										linkTo={rubro.linkTo} //Aquí o desde onclick
-										infoFor={rubro.name}
-									/>
-								</div>
-							</div>
-							<Image
-								className='min-w-[300px] flex-grow sm:w-8/12'
-								src={`/imgs/rubros/img_${rubro.docus}.png`}
-								alt={`Imagen de ${rubro.name}`}
-								objectFit='contain'
-							/>
-						</div>
+						<RubroContainer
+							key={'rubro-home-' + idx}
+							rubro={rubro}
+						/>
 					))}
 				</div>
-			</div>
-		</>
+			)}
+
+			{!isMobile && (
+				<>
+					<ProgressCircles
+						totalSlides={totalSlides}
+						currentSlide={currentSlide}
+					/>
+
+					<Swiper
+						modules={[Autoplay]}
+						spaceBetween={50}
+						slidesPerView={1}
+						autoplay={{ delay: 5000 }}
+						speed={1500}
+						loop
+						onSlideChange={swiper => setCurrentSlide(swiper.realIndex)}
+						className='h-full w-full'>
+						{Array.from({ length: totalSlides }).map(
+							(_, i) =>
+								rubros[i] && (
+									<SwiperSlide key={'slide-rubro-home-' + i}>
+										<RubroContainer rubro={rubros[i]} />
+									</SwiperSlide>
+								)
+						)}
+					</Swiper>
+				</>
+			)}
+		</div>
 	)
 }
+
+const RubroContainer = ({ rubro }: { rubro: Rubro }) => (
+	<div
+		className='flex w-full flex-wrap items-center justify-between gap-4 sm:flex-shrink-0 sm:gap-0'
+		style={{ scrollSnapAlign: 'start' }}>
+		<div className='flex flex-grow flex-row items-center gap-8 sm:w-4/12 md:gap-8'>
+			<Image
+				className='size-[60px] invert lg:size-[80px]'
+				src={`/imgs/rubros/${rubro.docus}.svg`}
+				alt={`Icono de ${rubro.name}`}
+				objectFit='contain'
+			/>
+			<div className='flex flex-col'>
+				<TextSpecial className='text-left text-base font-bold sm:text-xl lg:text-3xl'>{rubro.name}</TextSpecial>
+				<button className='flex items-center gap-1 text-[#5C8BD5]'>
+					<HiOutlineArrowRightCircle size={18} />
+					See more
+				</button>
+			</div>
+		</div>
+		<Image
+			className='min-h-[248px] min-w-[300px] flex-grow sm:w-8/12'
+			src={`/imgs/rubros/${rubro.docus}.png`}
+			alt={`Imagen de ${rubro.name}`}
+			objectFit='cover'
+		/>
+	</div>
+)
 
 export default RubrosCarrusel

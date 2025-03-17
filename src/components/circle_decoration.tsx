@@ -10,7 +10,7 @@ const Adorno_circulo_item = ({
 	const sizes: any = {
 		'sm-sz': { textSize: '7px', circle: 'h-1 w-1' },
 		'md-sz': { textSize: '9px', circle: 'h-2 w-2' },
-		'lg-sz': { textSize: '12px', circle: 'h-3 w-3' },
+		'lg-sz': { textSize: '12px', circle: 'size-[9px]' },
 	}
 
 	return (

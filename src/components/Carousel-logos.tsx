@@ -40,16 +40,13 @@ export default function LogoCarousel({ logos, direction = 'left' }: { direction:
 							<Image
 								src={logo}
 								alt={`Cliente ${index + 1}`}
-								width={160}
-								height={80}
+								className='h-[80px] w-[130px] object-center'
 								objectFit='contain'
 							/>
 						</div>
 					))}
 				</div>
 
-				{/* DIFERENTES GRADIENTES, PROBAR con w-56 ############################################ */}
-				{/* Gradiente izquierdo */}
 				<div
 					className='absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black to-black/0 mix-blend-multiply backdrop-blur-sm sm:w-56'
 					style={{
