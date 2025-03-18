@@ -2,6 +2,7 @@ import About_us from '@pages/About_us'
 import Blog from '@pages/Blog'
 import Contact_us from '@pages/Contact_us'
 import Home from '@pages/Home'
+import Partners from '@pages/Partners'
 import Inmobiliario from '@pages/rubros/Desarrollo_inmobiliario'
 import Hoteles from '@pages/rubros/Hoteles_boutique'
 import Servicios from '@pages/rubros/Servicios_productos'
@@ -44,13 +45,13 @@ const Routes = () => {
 					path='/contact_us'
 					component={Contact_us}
 				/>
-				{/*
+				
 				
 				<Route
 					path='/partners'
 					component={Partners}
 				/> 
-				*/}
+				
 
 				<Route>404: No such page!</Route>
 			</Switch>
