@@ -1,6 +1,7 @@
 import Main_screen from '@components/Main_screen'
 import { Hero } from '@modules/Hero'
 import RubroTemplate from '@modules/rubro_template'
+import useScreenSize from 'src/util/screenSize'
 
 import { useEffect, useState } from 'react'
 
@@ -56,15 +57,29 @@ const dataDesarrolloInmobiliario = {
 
 const Inmobiliario = () => {
 	const [dataInmobiliario, setDataInmobiliario] = useState(null)
+	const { breakpoint } = useScreenSize()
 	useEffect(() => {
 		setDataInmobiliario(dataDesarrolloInmobiliario)
 	}, [])
+
+	useEffect(() => {
+		setDataInmobiliario({
+			...dataDesarrolloInmobiliario,
+			colorBgSrc: [
+				`${folderData}backgroundColor.png`,
+				`${folderData}${breakpoint !== 'xs' ? 'desk_' : 'mobile_'}backgroundColor.png`,
+			],
+		})
+	}, [breakpoint])
 
 	if (!dataInmobiliario) return null
 
 	return (
 		<Main_screen>
-			<RubroTemplate rubroData={dataInmobiliario} />
+			<RubroTemplate
+				breakpoint={breakpoint}
+				rubroData={dataInmobiliario}
+			/>
 		</Main_screen>
 	)
 }

@@ -1,17 +1,10 @@
-import Main_screen from '@components/Main_screen'
-import { Hero } from '@modules/Hero'
+import Main_screen from '@components/Main_screen';
+import { Hero } from '@modules/Hero';
 import RubroTemplate from '@modules/rubro_template'
+import useScreenSize from 'src/util/screenSize'
 
 import { useEffect, useState } from 'react'
 
-const logos = [
-	'/clientes/logo1.png',
-	'/clientes/logo2.png',
-	'/clientes/logo3.png',
-	'/clientes/logo4.png',
-	'/clientes/logo5.png',
-	'/clientes/logo6.png',
-]
 const folderData = '/rubros/06 Hoteles Boutique/'
 const dataHoteles = {
 	title: 'Hoteles Boutique',
@@ -51,20 +44,34 @@ const dataHoteles = {
 			},
 		},
 	],
-	clientes: logos,
+	clientes: 'logos', // Por el momento se van, porque son los mismos
 }
 
 const Hoteles = () => {
 	const [dataHotel, setDataHotel] = useState(null)
+	const { breakpoint } = useScreenSize()
 	useEffect(() => {
 		setDataHotel(dataHoteles)
 	}, [])
+
+	useEffect(() => {
+		setDataHotel({
+			...dataHoteles,
+			colorBgSrc: [
+				`${folderData}backgroundColor.png`,
+				`${folderData}${breakpoint !== 'xs' ? 'desk_' : 'mobile_'}backgroundColor.png`,
+			],
+		})
+	}, [breakpoint])
 
 	if (!dataHotel) return null
 
 	return (
 		<Main_screen>
-			<RubroTemplate rubroData={dataHotel} />
+			<RubroTemplate
+				breakpoint={breakpoint}
+				rubroData={dataHotel}
+			/>
 		</Main_screen>
 	)
 }

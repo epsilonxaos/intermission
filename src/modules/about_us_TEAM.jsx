@@ -28,12 +28,12 @@ const Team_AboutUs = ({ team, screenSize }) => {
 				TEAM
 				<Adorno_circulo_item size='lg-sz' />
 			</TextTitle>
-			<section className='flex w-full flex-col justify-around space-y-10 overflow-x-hidden sm:flex-row sm:space-y-0'>
+			<section className='flex w-full flex-col justify-around space-y-10 overflow-x-hidden md:flex-row md:space-y-0'>
 				<div
 					onClick={handlePrev}
-					className='mr-4 hidden w-[50px] self-center sm:block'>
+					className='hidden self-center md:block'>
 					<Image
-						className='hidden rotate-180 sm:block'
+						className='rotate-180 w-[25px]'
 						src={`/imgs/icon_Flecha_Derecha.svg`}
 						alt={`Flecha izquierda para carrusel de equipo de Intermission`}
 						objectFit='contain'
@@ -44,21 +44,21 @@ const Team_AboutUs = ({ team, screenSize }) => {
 					ref={carruselRef}
 					className='w-full overflow-x-hidden'>
 					<div
-						className='flex flex-col gap-y-16 transition-transform duration-700 ease-in-out sm:flex-row'
+						className='flex flex-col gap-y-10 transition-transform duration-700 ease-in-out md:flex-row'
 						style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
 						{team.map((member, idx) => (
 							<article
 								key={idx}
-								className='flex-shrink-0 px-8 py-4 sm:w-1/3'>
+								className='flex-shrink-0 px-8 py-4 md:w-1/3'>
 								<Image
-									className='mb-4 w-full bg-center'
-									src={`/team/team1.png`}
+									className='mb-4 w-full min-h-[340px] bg-center'
+									src={member.imgSrc}
 									alt={`Persona del equipo de Intermission`}
 									objectFit='cover'
 								/>
-								<div className='text-left sm:text-center'>
+								<div className='text-left md:text-center'>
 									<TextTitle className='font-bold'>{member.name}</TextTitle>
-									<TextSubcontent className='mb-4'>{member.role}</TextSubcontent>
+									<TextSubcontent className='mb-4 md:mb-7'>{member.role}</TextSubcontent>
 									<TextSubcontent>{member.description}</TextSubcontent>
 								</div>
 							</article>
@@ -68,9 +68,9 @@ const Team_AboutUs = ({ team, screenSize }) => {
 
 				<div
 					onClick={handleNext}
-					className='ml-4 hidden w-[50px] self-center sm:block'>
+					className='hidden self-center md:block'>
 					<Image
-						className='hidden sm:block'
+						className='w-[25px] '
 						src={`/imgs/icon_Flecha_Derecha.svg`}
 						alt={`Flecha Derecha para carrusel de equipo de Intermission`}
 						objectFit='contain'
@@ -79,6 +79,7 @@ const Team_AboutUs = ({ team, screenSize }) => {
 			</section>
 			<ButtonForLink
 				text='Start'
+				colorText='text-white'
 				linkTo='/' //Aquí o desde onclick
 				infoFor={'Intermission'}
 			/>

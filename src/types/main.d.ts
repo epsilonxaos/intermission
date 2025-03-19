@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from 'react';
+
 
 declare global {
 	const APP_ENV: {
@@ -39,6 +40,7 @@ export type TButtonParams = {
 	text: string
 	type?: THTMLButtonTypeAttribute
 	className?: string
+	colorText?: string
 	onClick?: () => void
 }
 

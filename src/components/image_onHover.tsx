@@ -1,4 +1,3 @@
-import Blog from '@pages/Blog'
 import { twMerge } from 'tailwind-merge'
 
 import { useState } from 'react'
@@ -19,7 +18,7 @@ const IMG_Hover = ({ children, className, dataToDisplay, isBlog, whereDisplayPre
 			{/* Texto parte inferior, antes del hover */}
 			{/* SON DOS OPCIONES, El primero por si es blog, el segundo por defecto y si no están haciendo hover */}
 			{isBlog && (
-				<div className={twMerge(`flex mb-3 text-left ${isHovering ? 'invisible' : 'visible'}`, whereDisplayPreHover)}>
+				<div className={twMerge(`mb-3 flex text-left ${isHovering ? 'invisible' : 'visible'}`, whereDisplayPreHover)}>
 					<TextContent className='min-w-fit'>
 						0{isBlog}
 						<Adorno_circulo_item size='sm-sz' />
@@ -49,7 +48,7 @@ const IMG_Hover = ({ children, className, dataToDisplay, isBlog, whereDisplayPre
 
 			{/* Información que aparece cuando se hace hover */}
 			<div
-				className={`absolute inset-0 flex flex-col items-center justify-center p-4 transition-opacity duration-300 ${
+				className={`absolute inset-0 flex flex-col items-center justify-center overflow-y-scroll p-4 transition-opacity duration-300 sm:justify-start ${
 					isHovering ? 'opacity-80' : 'opacity-0'
 				}`}
 				style={{ backgroundColor: colorOverlay }}>

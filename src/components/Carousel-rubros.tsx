@@ -1,8 +1,8 @@
-import { ButtonForLink } from '@components/Button'
 import Adorno_circulo_item from '@components/circle_decoration'
 import { motion } from 'framer-motion'
 import 'swiper/css'
 import { Autoplay } from 'swiper/modules'
+import { Link } from 'wouter'
 
 import { useState } from 'react'
 import { HiOutlineArrowRightCircle } from 'react-icons/hi2'
@@ -132,9 +132,9 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 
 const RubroContainer = ({ rubro }: { rubro: Rubro }) => (
 	<div
-		className='flex w-full flex-wrap items-center justify-between gap-4 sm:flex-shrink-0 sm:gap-0'
+		className='flex w-full flex-wrap items-center justify-between gap-y-4 sm:flex-shrink-0'
 		style={{ scrollSnapAlign: 'start' }}>
-		<div className='flex flex-grow flex-row items-center gap-8 sm:w-4/12 md:gap-8'>
+		<div className='flex flex-grow flex-row items-center gap-3 sm:w-4/12 md:gap-5'>
 			<Image
 				className='size-[60px] invert lg:size-[80px]'
 				src={`/imgs/rubros/${rubro.docus}.svg`}
@@ -143,14 +143,16 @@ const RubroContainer = ({ rubro }: { rubro: Rubro }) => (
 			/>
 			<div className='flex flex-col'>
 				<TextSpecial className='text-left text-base font-bold sm:text-xl lg:text-3xl'>{rubro.name}</TextSpecial>
-				<button className='flex items-center gap-1 text-[#5C8BD5]'>
-					<HiOutlineArrowRightCircle size={18} />
-					See more
-				</button>
+				<Link to={rubro.linkTo}>
+					<button className='flex items-center gap-1 text-[#5C8BD5]'>
+						<HiOutlineArrowRightCircle size={18} />
+						See more
+					</button>
+				</Link>
 			</div>
 		</div>
 		<Image
-			className='min-h-[248px] min-w-[300px] flex-grow sm:w-8/12'
+			className='min-h-[248px] min-w-[300px] flex-grow sm:max-w-[60%]'
 			src={`/imgs/rubros/${rubro.docus}.png`}
 			alt={`Imagen de ${rubro.name}`}
 			objectFit='cover'

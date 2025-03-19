@@ -1,9 +1,14 @@
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge';
 
-import type { TButto4Link, TButtonParams } from '#types/main'
 
-import { Image } from './Image'
-import { TextSubcontent } from './Text'
+
+import type { TButto4Link, TButtonParams } from '#types/main';
+
+
+
+import { Image } from './Image';
+import { TextSubcontent } from './Text';
+
 
 export const Button = (opt: TButtonParams) => {
 	const { text, className, type = 'button', onClick } = opt
@@ -22,7 +27,7 @@ export const Button = (opt: TButtonParams) => {
 }
 
 export const ButtonForLink = (opt: TButto4Link) => {
-	const { text, linkTo, iconType = '1', className, type = 'button', onClick } = opt
+	const { text, linkTo, colorText, iconType = '1', className, type = 'button', onClick } = opt
 	const typeOfIcon = {
 		1: '/imgs/icon_Flecha_Derecha.svg',
 		2: '/imgs/icon_Flecha_derecha_2.svg',
@@ -39,7 +44,12 @@ export const ButtonForLink = (opt: TButto4Link) => {
 				alt={`Icono para más información sobre Intermission`}
 				objectFit='contain'
 			/>
-			<TextSubcontent className={`sm:text-sm ${iconType === '1' ? 'text-see-more' : 'text-white'}`}>
+			<TextSubcontent
+				className={twMerge(
+					`sm:text-sm`,
+					iconType === '1' ? 'text-see-more' : 'text-white',
+					colorText ? colorText : ''
+				)}>
 				{text}
 			</TextSubcontent>
 		</button>

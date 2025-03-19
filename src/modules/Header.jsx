@@ -50,7 +50,7 @@ const MenuList = [
 	{ name: 'About us', url: '/about_us', number: 1 },
 	{ name: 'Partners', url: '/partners', number: 2 },
 	{ name: 'Blog', url: '/blog', number: 4 },
-	{ name: 'Contact', url: '/contact', number: 1 },
+	{ name: 'Contact', url: '/contact_us', number: 1 },
 ]
 
 const Menu = ({ className, showDots = false }) => (

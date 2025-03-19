@@ -1,6 +1,7 @@
 import Main_screen from '@components/Main_screen'
 import { Hero } from '@modules/Hero'
 import RubroTemplate from '@modules/rubro_template'
+import useScreenSize from 'src/util/screenSize'
 
 import { useEffect, useState } from 'react'
 
@@ -15,7 +16,7 @@ const logos = [
 const folderData = '/rubros/09 Servicios y productos tecnologicos/'
 
 const dataServiciosYProductos = {
-	contentHeader: "GLUE X",
+	contentHeader: 'GLUE X',
 	title: 'Servicios y Productos tecnológicos',
 	bannerSrc: `${folderData}banner_inicio.png`,
 	iconSrc: `${folderData}icon_rubro.svg`,
@@ -58,15 +59,29 @@ const dataServiciosYProductos = {
 
 const Servicios = () => {
 	const [dataServicios, setDataServicios] = useState(null)
+	const { breakpoint } = useScreenSize()
 	useEffect(() => {
 		setDataServicios(dataServiciosYProductos)
 	}, [])
+
+	useEffect(() => {
+		setDataServicios({
+			...dataServiciosYProductos,
+			colorBgSrc: [
+				`${folderData}backgroundColor.png`,
+				`${folderData}${breakpoint !== 'xs' ? 'desk_' : 'mobile_'}backgroundColor.png`,
+			],
+		})
+	}, [breakpoint])
 
 	if (!dataServicios) return null
 
 	return (
 		<Main_screen>
-			<RubroTemplate rubroData={dataServicios} />
+			<RubroTemplate
+				breakpoint={breakpoint}
+				rubroData={dataServicios}
+			/>
 		</Main_screen>
 	)
 }

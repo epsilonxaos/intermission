@@ -1,6 +1,7 @@
 import Main_screen from '@components/Main_screen'
 import { Hero } from '@modules/Hero'
 import RubroTemplate from '@modules/rubro_template'
+import useScreenSize from 'src/util/screenSize'
 
 import { useEffect, useState } from 'react'
 
@@ -56,15 +57,29 @@ const dataTiendasOnline = {
 
 const Tiendas = () => {
 	const [dataTiendas, setDataTiendas] = useState(null)
+	const { breakpoint } = useScreenSize()
 	useEffect(() => {
 		setDataTiendas(dataTiendasOnline)
 	}, [])
+
+	useEffect(() => {
+		setDataTiendas({
+			...dataTiendasOnline,
+			colorBgSrc: [
+				`${folderData}backgroundColor.png`,
+				`${folderData}${breakpoint !== 'xs' ? 'desk_' : 'mobile_'}backgroundColor.png`,
+			],
+		})
+	}, [breakpoint])
 
 	if (!dataTiendas) return null
 
 	return (
 		<Main_screen>
-			<RubroTemplate rubroData={dataTiendas} />
+			<RubroTemplate
+				breakpoint={breakpoint}
+				rubroData={dataTiendas}
+			/>
 		</Main_screen>
 	)
 }

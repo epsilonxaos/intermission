@@ -4,12 +4,20 @@ import Section from '@components/Section'
 import { TextContent, TextSmall, TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
 import IMG_Hover from '@components/image_onHover'
-import useScreenSize from 'src/util/screenSize'
 import { twMerge } from 'tailwind-merge'
 
-const RubroTemplate = ({ rubroData }) => {
-	const { contentHeader = null, title, bannerSrc, iconSrc, colorBgSrc, colorBg, cesData, clientes } = rubroData
-	const { breakpoint } = useScreenSize()
+const RubroTemplate = ({ rubroData, breakpoint }) => {
+	const { contentHeader = null, title, bannerSrc, iconSrc, colorBgSrc, colorBg, cesData } = rubroData
+	const clientes = [
+		'/imgs/clientes/1.svg',
+		'/imgs/clientes/2.svg',
+		'/imgs/clientes/3.svg',
+		'/imgs/clientes/4.svg',
+		'/imgs/clientes/1.svg',
+		'/imgs/clientes/2.svg',
+		'/imgs/clientes/3.svg',
+		'/imgs/clientes/4.svg',
+	]
 
 	return (
 		<>
@@ -23,7 +31,7 @@ const RubroTemplate = ({ rubroData }) => {
 			{/* INFORMACION */}
 			<Section className='xl:px-0'>
 				<section className='flex w-full items-start justify-between'>
-					<div className='dev-cnt max-w-[750px] text-left'>
+					{breakpoint === 'xs' && (<div className='dev-cnt max-w-[750px] text-left'>
 						<TextTitle className='mb-4'>{title}</TextTitle>
 						<TextContent className='grid gap-y-4'>
 							<p>
@@ -57,8 +65,17 @@ const RubroTemplate = ({ rubroData }) => {
 								impulsan el crecimiento de tu marca
 							</p>
 						</TextContent>
-					</div>
+					</div>)}
 					{/* //TODO CAMBIAR A COMPONENTE */}
+					{breakpoint !== 'xs' && (	
+						<div className='max-w-[750px] text-left'>
+							<TextTitle className='mb-4'>{title}</TextTitle>
+							<Image
+								className=''
+								src={"/rubros/Servicios/texto_Intermission.svg"}
+							/>
+						</div>
+					)}
 					{breakpoint !== 'xs' && (
 						<Image
 							className='max-w-[85px]'
@@ -75,88 +92,13 @@ const RubroTemplate = ({ rubroData }) => {
 
 			{/* PROCESOs */}
 			<Section
-				classBackground='md:min-h-[460px] place-content-center'
-				className='xl:px-0'
-				styleBG={{ backgroundImage: `url("${colorBgSrc}")` }}>
-				<TextTitle className='mb-10 self-start md:mb-20'>
-					Proceso Total
-					<Adorno_circulo_item size='lg-sz' />
-				</TextTitle>
-				<section className='flex w-full flex-col justify-between gap-y-14 md:flex-row'>
-					{/* //EN DUPLAS */}
-					<ContainerForProcess>
-						<TextForProcess>
-							Briefing
-							<Adorno_circulo_item size='lg-sz' />
-						</TextForProcess>
-						<TextForProcess isData>
-							<span>
-								<Adorno_circulo_item size='lg-sz' />
-								Ecosistema
-							</span>
-							<TextContentForProcess>
-								<ul>
-									<li>CRM</li>
-									<li>Landing</li>
-									<li>Automat</li>
-									<li>Embudo</li>
-								</ul>
-							</TextContentForProcess>
-						</TextForProcess>
-					</ContainerForProcess>
-
-					<ContainerForProcess>
-						<TextForProcess isData>
-							<span>
-								Estrategia
-								<Adorno_circulo_item size='lg-sz' />
-							</span>
-							<TextContentForProcess>
-								<ul>
-									<li>CRM</li>
-									<li>Landing</li>
-									<li>Automat</li>
-									<li>Embudo</li>
-								</ul>
-							</TextContentForProcess>
-						</TextForProcess>
-						<TextForProcess>
-							<Adorno_circulo_item size='lg-sz' />
-							Aprobación
-						</TextForProcess>
-					</ContainerForProcess>
-
-					<ContainerForProcess>
-						<TextForProcess isData>
-							<span>
-								Lanzamiento
-								<Adorno_circulo_item size='lg-sz' />
-							</span>
-							<TextContentForProcess>
-								<ul>
-									<li>CRM</li>
-									<li>Landing</li>
-									<li>Automat</li>
-									<li>Embudo</li>
-								</ul>
-							</TextContentForProcess>
-						</TextForProcess>
-						<TextForProcess isData>
-							<span>
-								<Adorno_circulo_item size='lg-sz' />
-								Seguimiento
-							</span>
-							<TextContentForProcess>
-								<ul>
-									<li>CRM</li>
-									<li>Landing</li>
-									<li>Automat</li>
-									<li>Embudo</li>
-								</ul>
-							</TextContentForProcess>
-						</TextForProcess>
-					</ContainerForProcess>
-				</section>
+				styleBG={{ backgroundImage: `url("${colorBgSrc[0]}")` }}
+				className='px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0'>
+				<Image
+					className='w-full'
+					src={colorBgSrc[1]}
+					alt='Proceso de Intermission'
+				/>
 			</Section>
 
 			{/* CASOS DE EXITO */}
@@ -185,8 +127,15 @@ const RubroTemplate = ({ rubroData }) => {
 			</Section>
 
 			{/* CLIENTES */}
-			<Section className='gap-y-10 sm:gap-y-14'>
-				<TextTitle>Clientes</TextTitle>
+			<Section className='gap-y-5 sm:gap-y-10'>
+				<TextContent className='hidden sm:block'>Clientes</TextContent>
+				<TextContent className='block self-start sm:hidden'>
+					Clientes
+					<Adorno_circulo_item
+						className=''
+						size='md-sz'
+					/>
+				</TextContent>
 				<LogoCarousel
 					logos={clientes}
 					direction='left'
