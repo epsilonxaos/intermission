@@ -1,7 +1,7 @@
 import { ButtonForLink } from '@components/Button'
 import Main_screen from '@components/Main_screen'
 import Section from '@components/Section'
-import { TextSmall, TextSubcontent, TextTitle } from '@components/Text'
+import { TextSmall, TextSpecial, TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
 import IMG_Hover from '@components/image_onHover'
 import { Hero } from '@modules/Hero'
@@ -58,7 +58,9 @@ const Blog = () => {
 
 	return (
 		<Main_screen>
-			<Hero>A Digital Consultancy Company</Hero>
+			<Hero>
+			<TextSpecial>A Digital Consultancy Company.</TextSpecial>
+			</Hero>
 			<Section className='xl:px-0'>
 				{/* Contenedor de articulos */}
 				<section className='grid w-full gap-11 sm:grid-cols-3'>
