@@ -4,6 +4,7 @@ import Section from '@components/Section'
 import { TextContent, TextSmall, TextSubcontent, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
 import IMG_Hover from '@components/image_onHover'
+import RubroServiciosCARR from '@components/rubros_servicios_CARR'
 import { twMerge } from 'tailwind-merge'
 
 const RubroTemplate = ({ rubroData, breakpoint }) => {
@@ -18,6 +19,7 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 		'/imgs/clientes/3.svg',
 		'/imgs/clientes/4.svg',
 	]
+	const servicios = [{ nameDoc: 'CDigital' }, { nameDoc: 'IEDigitales' }, { nameDoc: 'DSWeb' }, { nameDoc: 'SPMedia' }]
 
 	return (
 		<>
@@ -31,48 +33,50 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 			{/* INFORMACION */}
 			<Section className='xl:px-0'>
 				<section className='flex w-full items-start justify-between'>
-					{breakpoint === 'xs' && (<div className='dev-cnt max-w-[750px] text-left'>
-						<TextTitle className='mb-4'>{title}</TextTitle>
-						<TextContent className='grid gap-y-4'>
-							<p>
-								Redefiniendo tu estrategia digital a través de la ciencia de datos{' '}
-								<Adorno_circulo_item
-									size='md-sz'
-									item={{ estrella: 1 }}
-									margin='mx-0'
-									color='#00704F'
-								/>
-							</p>
-							<p className='mr-3'>
-								En un mundo donde el desorden y la complejidad son la norma, Intermission{' '}
-								<Adorno_circulo_item
-									size='md-sz'
-									item={{ estrella: 2 }}
-									margin='mx-0 mr-[14px]'
-									color='#00704F'
-								/>
-								emerge como la pausa estratégica necesaria.
-							</p>
-							<p>
-								Nos especializamos en crear claridad a partir
-								<Adorno_circulo_item
-									size='md-sz'
-									item={{ estrella: 3 }}
-									margin='mx-0 mr-[14px]'
-									color='#00704F'
-								/>
-								del caos, conectando los puntos entre datos dispersos para revelar las oportunidades ocultas que
-								impulsan el crecimiento de tu marca
-							</p>
-						</TextContent>
-					</div>)}
+					{breakpoint === 'xs' && (
+						<div className='max-w-[750px] text-left'>
+							<TextTitle className='mb-4'>{title}</TextTitle>
+							<TextContent className='grid gap-y-4'>
+								<p>
+									Redefiniendo tu estrategia digital a través de la ciencia de datos{' '}
+									<Adorno_circulo_item
+										size='md-sz'
+										item={{ estrella: 1 }}
+										margin='mx-0'
+										color='#00704F'
+									/>
+								</p>
+								<p className='mr-3'>
+									En un mundo donde el desorden y la complejidad son la norma, Intermission{' '}
+									<Adorno_circulo_item
+										size='md-sz'
+										item={{ estrella: 2 }}
+										margin='mx-0 mr-[14px]'
+										color='#00704F'
+									/>
+									emerge como la pausa estratégica necesaria.
+								</p>
+								<p>
+									Nos especializamos en crear claridad a partir
+									<Adorno_circulo_item
+										size='md-sz'
+										item={{ estrella: 3 }}
+										margin='mx-0 mr-[14px]'
+										color='#00704F'
+									/>
+									del caos, conectando los puntos entre datos dispersos para revelar las oportunidades ocultas que
+									impulsan el crecimiento de tu marca
+								</p>
+							</TextContent>
+						</div>
+					)}
 					{/* //TODO CAMBIAR A COMPONENTE */}
-					{breakpoint !== 'xs' && (	
+					{breakpoint !== 'xs' && (
 						<div className='max-w-[750px] text-left'>
 							<TextTitle className='mb-4'>{title}</TextTitle>
 							<Image
 								className=''
-								src={"/rubros/Servicios/texto_Intermission.svg"}
+								src={'/rubros/Servicios/texto_Intermission.svg'}
 							/>
 						</div>
 					)}
@@ -85,9 +89,13 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 				</section>
 			</Section>
 
-			<Section>
-				{/* NUESTRO SERVICIOS */}
-				<section>TODO: Carrusel entero con botones(secuencial y directo)</section>
+			{/* NUESTRO SERVICIOS */}
+			<Section className='pt-8 pb-10 sm:pb-20 sm:pt-16 pt-120,180 71,92'>
+				<RubroServiciosCARR
+					breakpoint={breakpoint}
+					servicios={servicios}
+					folderPath={'/rubros/Servicios/'}
+				/>
 			</Section>
 
 			{/* PROCESOs */}
