@@ -31,7 +31,7 @@ const RubroServiciosCARR = (props: any) => {
 
 	return (
 		<div className='flex w-full flex-col items-center'>
-			<TextTitle className='mb-5 self-start sm:self-center'>Nuestros Servicios</TextTitle>
+			<TextTitle className='mb-5 self-start sm:self-center sm:text-[22px]/[30px]'>Nuestros Servicios</TextTitle>
 			{/* CONTROLES DIRECTO */}
 			<div className='mb-12 flex h-8 w-[100vw] max-w-[550px] justify-around invert sm:mb-8 sm:h-14 sm:justify-between'>
 				{servicios.map((servicio, idx) => (

@@ -11,7 +11,7 @@ const Text = (opt: TTexts) => {
 // base:16 => 20 => 24
 export const TextTitle = (opt: TTexts) => {
 	const { children, className } = opt
-	return <article className={twMerge('text-base text-main sm:text-xl lg:text-2xl', className)}>{children}</article>
+	return <article className={twMerge('text-base text-main sm:text-[22px]/[30px] lg:text-2xl', className)}>{children}</article>
 }
 
 // base:14 => 18
@@ -26,6 +26,7 @@ export const TextSubcontent = (opt: TTexts) => {
 	return <article className={twMerge('text-xs text-main sm:text-base', className)}>{children}</article>
 }
 
+// Base:10 =>
 export const TextSmall = (opt: TTexts) => {
 	const { children, className } = opt
 	return <article className={twMerge('text-[10px]/[14px]', className)}>{children}</article>

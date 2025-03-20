@@ -15,7 +15,7 @@ const Section = (opt: TComponent & { classBackground?: string; styleBG?: React.C
 			{/* CONTENEDOR */}
 			<Container>
 				<div
-					className={`flex w-full max-w-section-content flex-col items-center justify-center px-8 text-main sm:px-8 ${className}`}>
+					className={twMerge(`flex w-full max-w-section-content flex-col items-center justify-center px-8 text-main sm:px-8`, className)}>
 					{children}
 				</div>
 			</Container>

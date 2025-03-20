@@ -20,37 +20,25 @@ const dataDesarrolloInmobiliario = {
 	iconSrc: `${folderData}icon_rubro.svg`,
 	colorBgSrc: `${folderData}backgroundColor.png`,
 	colorBg: '#B62121',
-	clientes: logos,
+	clientes: 'logos', // Por el momento se van, porque son los mismos. Entonces se toman del template
 	cesData: [
 		{
 			imgSrc: `${folderData}CEs/1.png`,
 			title: 'Nombre del Hotel',
 			ubicacion: 'Ubicación',
-			Ps: {
-				1: 'Parrafo 1',
-				2: 'Parrafo 2',
-				3: 'Parrafo 3',
-			},
+			Ps: null,
 		},
 		{
 			imgSrc: `${folderData}CEs/2.png`,
 			title: 'Nombre del Hotel',
 			ubicacion: 'Ubicación',
-			Ps: {
-				1: 'Parrafo 1',
-				2: 'Parrafo 2',
-				3: 'Parrafo 3',
-			},
+			Ps: null,
 		},
 		{
 			imgSrc: `${folderData}CEs/3.png`,
 			title: 'Nombre del Hotel',
 			ubicacion: 'Ubicación',
-			Ps: {
-				1: 'Parrafo 1',
-				2: 'Parrafo 2',
-				3: 'Parrafo 3',
-			},
+			Ps: null,
 		},
 	],
 }
@@ -79,6 +67,71 @@ const Inmobiliario = () => {
 			<RubroTemplate
 				breakpoint={breakpoint}
 				rubroData={dataInmobiliario}
+				CEsContent={[
+					<>
+						<p>
+							<strong>Nombre del Real State</strong>, un hotel ubicado frente al mar, se centra en la promoción de dos
+							áreas de negocio: hospedaje y daypass
+						</p>
+						<p className='flex justify-between'>
+							<strong>Crecimiento</strong>
+							<strong>CTR</strong>
+							<strong>
+								Estrategia <br /> digital
+							</strong>
+						</p>
+						<p>
+							Durante enero, las campañas registraron un <strong>CTR inferior al 1.5%</strong>. Tras revisar el
+							contenido y optimizar la estrategia digital, se realizó un análisis de los segmentos de mercado objetivo
+						</p>
+						<p>
+							Esta optimización resultó en un buen rendimiento, logrando incrementar el{' '}
+							<strong>CTR hasta un 6.61% en los meses siguientes</strong>.
+						</p>
+					</>,
+					<>
+						<p>
+							<strong>Nombre del Real State</strong>, un hotel ubicado frente al mar, se centra en la promoción de dos
+							áreas de negocio: hospedaje y daypass
+						</p>
+						<p className='flex justify-between'>
+							<strong>Crecimiento</strong>
+							<strong>CTR</strong>
+							<strong>
+								Estrategia <br /> digital
+							</strong>
+						</p>
+						<p>
+							Durante enero, las campañas registraron un <strong>CTR inferior al 1.5%</strong>. Tras revisar el
+							contenido y optimizar la estrategia digital, se realizó un análisis de los segmentos de mercado objetivo
+						</p>
+						<p>
+							Esta optimización resultó en un buen rendimiento, logrando incrementar el{' '}
+							<strong>CTR hasta un 6.61% en los meses siguientes</strong>.
+						</p>
+					</>,
+					<>
+						<p>
+							<strong>Nombre del Real State</strong>, un hotel ubicado frente al mar, se centra en la promoción de dos
+							áreas de negocio: hospedaje y daypass
+						</p>
+						<p className='flex justify-between'>
+							<strong>Crecimiento</strong>
+							<strong>CTR</strong>
+							<strong>
+								Estrategia <br /> digital
+							</strong>
+						</p>
+						<p>
+							Durante enero, las campañas registraron un <strong>CTR inferior al 1.5%</strong>. Tras revisar el
+							contenido y optimizar la estrategia digital, se realizó un análisis de los segmentos de mercado objetivo
+						</p>
+						<p>
+							Esta optimización resultó en un buen rendimiento, logrando incrementar el{' '}
+							<strong>CTR hasta un 6.61% en los meses siguientes</strong>.
+						</p>
+					</>,
+				]}
 			/>
 		</Main_screen>
 	)

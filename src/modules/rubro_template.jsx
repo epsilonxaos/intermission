@@ -7,7 +7,7 @@ import IMG_Hover from '@components/image_onHover'
 import RubroServiciosCARR from '@components/rubros_servicios_CARR'
 import { twMerge } from 'tailwind-merge'
 
-const RubroTemplate = ({ rubroData, breakpoint }) => {
+const RubroTemplate = ({ rubroData, breakpoint, CEsContent }) => {
 	const { contentHeader = null, title, bannerSrc, iconSrc, colorBgSrc, colorBg, cesData } = rubroData
 	const clientes = [
 		'/imgs/clientes/1.svg',
@@ -33,53 +33,21 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 			{/* INFORMACION */}
 			<Section className='xl:px-0'>
 				<section className='flex w-full items-start justify-between'>
-					{breakpoint === 'xs' && (
-						<div className='max-w-[750px] text-left'>
-							<TextTitle className='mb-4'>{title}</TextTitle>
-							<TextContent className='grid gap-y-4'>
-								<p>
-									Redefiniendo tu estrategia digital a través de la ciencia de datos{' '}
-									<Adorno_circulo_item
-										size='md-sz'
-										item={{ estrella: 1 }}
-										margin='mx-0'
-										color='#00704F'
-									/>
-								</p>
-								<p className='mr-3'>
-									En un mundo donde el desorden y la complejidad son la norma, Intermission{' '}
-									<Adorno_circulo_item
-										size='md-sz'
-										item={{ estrella: 2 }}
-										margin='mx-0 mr-[14px]'
-										color='#00704F'
-									/>
-									emerge como la pausa estratégica necesaria.
-								</p>
-								<p>
-									Nos especializamos en crear claridad a partir
-									<Adorno_circulo_item
-										size='md-sz'
-										item={{ estrella: 3 }}
-										margin='mx-0 mr-[14px]'
-										color='#00704F'
-									/>
-									del caos, conectando los puntos entre datos dispersos para revelar las oportunidades ocultas que
-									impulsan el crecimiento de tu marca
-								</p>
-							</TextContent>
-						</div>
-					)}
+					<div className='max-w-[750px] text-left'>
+						<TextTitle className='mb-4 sm:text-[22px]/[30px]'>{title}</TextTitle>
+						<TextContent className='grid gap-y-4'>
+							<p>Redefiniendo tu estrategia digital a través de la ciencia de datos</p>
+							<p className='mr-3'>
+								En un mundo donde el desorden y la complejidad son la norma, Intermission emerge como la pausa
+								estratégica necesaria.
+							</p>
+							<p>
+								Nos especializamos en crear claridad a partir del caos, conectando los puntos entre datos dispersos para
+								revelar las oportunidades ocultas que impulsan el crecimiento de tu marca
+							</p>
+						</TextContent>
+					</div>
 					{/* //TODO CAMBIAR A COMPONENTE */}
-					{breakpoint !== 'xs' && (
-						<div className='max-w-[750px] text-left'>
-							<TextTitle className='mb-4'>{title}</TextTitle>
-							<Image
-								className=''
-								src={'/rubros/Servicios/texto_Intermission.svg'}
-							/>
-						</div>
-					)}
 					{breakpoint !== 'xs' && (
 						<Image
 							className='max-w-[85px]'
@@ -110,13 +78,13 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 			</Section>
 
 			{/* CASOS DE EXITO */}
-			<Section className='xl:px-0'>
+			<Section className='px-0 sm:px-0'>
 				<TextTitle className='mb-10 self-start'>Casos de Éxito</TextTitle>
 				{/* contenedor de imagenes */}
 				<section className='flex w-full flex-col justify-between gap-y-8 sm:flex-row'>
 					{cesData.map((CE, idx) => (
 						<IMG_Hover
-							className='max-h-[390px] sm:max-h-[530px] sm:w-[30%]'
+							className='max-h-[390px] text-center sm:max-h-[530px] sm:w-[30%]'
 							key={idx}
 							dataToDisplay={{
 								imgSrc: CE.imgSrc,
@@ -124,11 +92,7 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 								subtitle: CE.ubicacion,
 								colorOverlay: colorBg,
 							}}>
-							<TextSubcontent className='grid gap-y-8 px-4 text-left'>
-								<p>{CE.Ps['1']}</p>
-								<p>{CE.Ps['2']}</p>
-								<p>{CE.Ps['3']}</p>
-							</TextSubcontent>
+							<TextSubcontent className='grid gap-y-8 px-4 text-left'>{CEsContent[idx]&&CEsContent[idx]}</TextSubcontent>
 						</IMG_Hover>
 					))}
 				</section>
