@@ -1,5 +1,7 @@
 import { twMerge } from 'tailwind-merge'
+
 import { useRef, useState } from 'react'
+
 import { Image } from './Image'
 import { TextTitle } from './Text'
 
@@ -109,7 +111,7 @@ const ButtonCarouselRubros = (props: any) => {
 			className=''
 			onClick={changeChosen}>
 			<Image
-				className='h-full hover:scale-110'
+				className='h-[40px] w-[60px] hover:scale-110'
 				src={`${nameDoc}`}
 				alt='Servicios Intermission'
 				objectFit='contain'

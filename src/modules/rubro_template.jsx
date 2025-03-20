@@ -90,7 +90,7 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 			</Section>
 
 			{/* NUESTRO SERVICIOS */}
-			<Section className='pt-8 pb-10 sm:pb-20 sm:pt-16 pt-120,180 71,92'>
+			<Section className=''>
 				<RubroServiciosCARR
 					breakpoint={breakpoint}
 					servicios={servicios}
@@ -135,7 +135,7 @@ const RubroTemplate = ({ rubroData, breakpoint }) => {
 			</Section>
 
 			{/* CLIENTES */}
-			<Section className='gap-y-5 sm:gap-y-10'>
+			<Section className=''>
 				<TextContent className='hidden sm:block'>Clientes</TextContent>
 				<TextContent className='block self-start sm:hidden'>
 					Clientes

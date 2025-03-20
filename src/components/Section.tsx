@@ -1,3 +1,4 @@
+import Container from '@components/Container'
 import { twMerge } from 'tailwind-merge'
 
 import type { TComponent } from '#types/main'
@@ -12,13 +13,12 @@ const Section = (opt: TComponent & { classBackground?: string; styleBG?: React.C
 			className={twMerge('place-content-center', classBackground)}
 			style={styleBG}>
 			{/* CONTENEDOR */}
-			<div className='mx-auto flex max-w-section flex-col items-center justify-center py-10 text-center'>
-				{/* CONTENIDO */}
+			<Container>
 				<div
 					className={`flex w-full max-w-section-content flex-col items-center justify-center px-8 text-main sm:px-8 ${className}`}>
 					{children}
 				</div>
-			</div>
+			</Container>
 		</BackForSection>
 	)
 }
