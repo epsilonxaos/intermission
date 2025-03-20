@@ -111,7 +111,7 @@ const ButtonCarouselRubros = (props: any) => {
 			className=''
 			onClick={changeChosen}>
 			<Image
-				className='h-[40px] w-[60px] hover:scale-110'
+				className='h-[40px] w-[60px] hover:scale-110 md:h-full md:w-auto'
 				src={`${nameDoc}`}
 				alt='Servicios Intermission'
 				objectFit='contain'
