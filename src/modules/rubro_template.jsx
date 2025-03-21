@@ -19,7 +19,53 @@ const RubroTemplate = ({ rubroData, breakpoint, CEsContent }) => {
 		'/imgs/clientes/3.svg',
 		'/imgs/clientes/4.svg',
 	]
-	const servicios = [{ nameDoc: 'CDigital' }, { nameDoc: 'IEDigitales' }, { nameDoc: 'DSWeb' }, { nameDoc: 'SPMedia' }]
+	const servicios = [
+		{
+			nameDoc: 'CDigital',
+			title: { es: 'Consultoría Digital', en: 'Consultancy Company' },
+			tasks: [
+				'Investigación del mercado',
+				'Metodología comercial digital',
+				'Capacitación tecnológica',
+				'Capacitación de ventas',
+			],
+		},
+		{
+			nameDoc: 'IEDigitales',
+			title: { es: 'Implementación de Ecosistemas digitales', en: 'Digital Innovation' },
+			tasks: [
+				"Implementación de CRM (Kommo)",
+				"Automatización de WhatsApp",
+				"Configuración de activos",
+				"Desarrollo de landing (cotizador)",
+				"Capacitación ecosistema",
+			],
+		},
+		{
+			nameDoc: 'DSWeb',
+			title: { es: 'Desarrollo de sitios web', en: 'Digital Performance' },
+			tasks: [
+				"UX: Experiencia de usuario",
+				"UI: Diseño de interfaz",
+				"Desarrollo de textos persuasivos",
+				"Diseño web personalizado",
+				"Desarrollo web a medida",
+				
+			],
+		},
+		{
+			nameDoc: 'SPMedia',
+			title: { es: 'Social paid Media', en: 'Digital Strategy' },
+			tasks: [
+				"Reconocimiento de objetivos",
+				"Definición de segmentación",
+				"Diseño de copie out y copie in",
+				"Diseño visual de campañas",
+				"Lanzamiento y optimización",
+				
+			],
+		 },
+	]
 
 	return (
 		<>
@@ -92,7 +138,9 @@ const RubroTemplate = ({ rubroData, breakpoint, CEsContent }) => {
 								subtitle: CE.ubicacion,
 								colorOverlay: colorBg,
 							}}>
-							<TextSubcontent className='grid gap-y-8 px-4 text-left'>{CEsContent[idx]&&CEsContent[idx]}</TextSubcontent>
+							<TextSubcontent className='grid gap-y-8 px-4 text-left'>
+								{CEsContent[idx] && CEsContent[idx]}
+							</TextSubcontent>
 						</IMG_Hover>
 					))}
 				</section>

@@ -8,7 +8,7 @@ const Text = (opt: TTexts) => {
 	return <p className={twMerge('text-sm', className)}>{children}</p>
 }
 
-// base:16 => 20 => 24
+// base:16 => 22 => 24
 export const TextTitle = (opt: TTexts) => {
 	const { children, className } = opt
 	return <article className={twMerge('text-base text-main sm:text-[22px]/[30px] lg:text-2xl', className)}>{children}</article>

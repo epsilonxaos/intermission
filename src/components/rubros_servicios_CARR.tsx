@@ -3,10 +3,13 @@ import { twMerge } from 'tailwind-merge'
 import { useRef, useState } from 'react'
 
 import { Image } from './Image'
-import { TextTitle } from './Text'
+import { TextSubcontent, TextTitle } from './Text'
+import Adorno_circulo_item from './circle_decoration'
 
 type TDataService = {
 	nameDoc: string
+	title: { es: string; en: string }
+	tasks: string[]
 }
 type TServices = {
 	servicios: TDataService[]
@@ -54,14 +57,41 @@ const RubroServiciosCARR = (props: any) => {
 							<article
 								key={idx}
 								className={
-									'flex w-full flex-shrink-0 flex-col-reverse justify-between p-1 sm:min-h-[400px] sm:flex-row'
+									'flex w-full flex-shrink-0 flex-col-reverse justify-between p-1 sm:min-h-[400px] sm:flex-row sm:items-center'
 								}>
-								<Image
-									src={`${folderPath}text_servicios/${'CDigital'}.svg`}
-									alt='Servicios Intermission'
-									objectFit='contain'
-									className={twMerge('', breakpoint === 'xs' ? 'w-[210px] max-w-[80%] pt-5' : 'w-[33%]')}
-								/>
+								<div className='flex flex-col gap-[13px] sm:gap-[30px]'>
+									<section className='h-fit pr-2'>
+										{breakpoint !== 'xs' ? (
+											<div className='flex gap-4'>
+												<Adorno_circulo_item
+													color='#00704F'
+													size='md-sz'
+												/>
+												<div>
+													<TextSubcontent>{servicio.title.en}</TextSubcontent>
+													<TextTitle>{servicio.title.es}</TextTitle>
+												</div>
+											</div>
+										) : (
+											<TextTitle>{servicio.title.es}</TextTitle>
+										)}
+									</section>
+
+									<ul className='pl-2 pr-4 sm:pl-4'>
+										{servicio.tasks.map((act, idx) => (
+											<li
+												key={idx}
+												className='flex items-center gap-2'>
+												<Adorno_circulo_item
+													margin='mx-1 self-start'
+													color='#00704F'
+													size='md-sz'
+												/>
+												<TextSubcontent>{act}</TextSubcontent>
+											</li>
+										))}
+									</ul>
+								</div>
 								<Image
 									src={`${folderPath}imgs_servicios/${servicio.nameDoc}.png`}
 									alt='Trabajos realizados'
