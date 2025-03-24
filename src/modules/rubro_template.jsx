@@ -34,37 +34,35 @@ const RubroTemplate = ({ rubroData, breakpoint, CEsContent }) => {
 			nameDoc: 'IEDigitales',
 			title: { es: 'Implementación de Ecosistemas digitales', en: 'Digital Innovation' },
 			tasks: [
-				"Implementación de CRM (Kommo)",
-				"Automatización de WhatsApp",
-				"Configuración de activos",
-				"Desarrollo de landing (cotizador)",
-				"Capacitación ecosistema",
+				'Implementación de CRM (Kommo)',
+				'Automatización de WhatsApp',
+				'Configuración de activos',
+				'Desarrollo de landing (cotizador)',
+				'Capacitación ecosistema',
 			],
 		},
 		{
 			nameDoc: 'DSWeb',
 			title: { es: 'Desarrollo de sitios web', en: 'Digital Performance' },
 			tasks: [
-				"UX: Experiencia de usuario",
-				"UI: Diseño de interfaz",
-				"Desarrollo de textos persuasivos",
-				"Diseño web personalizado",
-				"Desarrollo web a medida",
-				
+				'UX: Experiencia de usuario',
+				'UI: Diseño de interfaz',
+				'Desarrollo de textos persuasivos',
+				'Diseño web personalizado',
+				'Desarrollo web a medida',
 			],
 		},
 		{
 			nameDoc: 'SPMedia',
 			title: { es: 'Social paid Media', en: 'Digital Strategy' },
 			tasks: [
-				"Reconocimiento de objetivos",
-				"Definición de segmentación",
-				"Diseño de copie out y copie in",
-				"Diseño visual de campañas",
-				"Lanzamiento y optimización",
-				
+				'Reconocimiento de objetivos',
+				'Definición de segmentación',
+				'Diseño de copie out y copie in',
+				'Diseño visual de campañas',
+				'Lanzamiento y optimización',
 			],
-		 },
+		},
 	]
 
 	return (
@@ -127,18 +125,18 @@ const RubroTemplate = ({ rubroData, breakpoint, CEsContent }) => {
 			<Section className='px-0 sm:px-0'>
 				<TextTitle className='mb-10 self-start'>Casos de Éxito</TextTitle>
 				{/* contenedor de imagenes */}
-				<section className='flex w-full flex-col justify-between gap-y-8 sm:flex-row'>
+				<section className='flex w-full flex-col justify-between gap-8 sm:flex-row'>
 					{cesData.map((CE, idx) => (
 						<IMG_Hover
-							className='max-h-[390px] text-center sm:max-h-[530px] sm:w-[30%]'
-							key={idx}
+							className='h-full max-h-[390px] w-full text-center sm:max-h-[530px] md:max-h-none md:min-h-[530px]'
+							key={'card-info-' + idx} // TODO: Verificar si se puede cambiar por CE.id
 							dataToDisplay={{
 								imgSrc: CE.imgSrc,
 								title: CE.title,
 								subtitle: CE.ubicacion,
 								colorOverlay: colorBg,
 							}}>
-							<TextSubcontent className='grid gap-y-8 px-4 text-left'>
+							<TextSubcontent className='grid cursor-default gap-6 p-4 text-left text-sm !leading-5 tracking-normal'>
 								{CEsContent[idx] && CEsContent[idx]}
 							</TextSubcontent>
 						</IMG_Hover>

@@ -1,3 +1,4 @@
+import chroma from 'chroma-js'
 import { twMerge } from 'tailwind-merge'
 
 import { useState } from 'react'
@@ -6,39 +7,12 @@ import { Image } from './Image'
 import { TextContent, TextSmall } from './Text'
 import Adorno_circulo_item from './circle_decoration'
 
-const IMG_Hover = ({ children, className, dataToDisplay, isBlog, whereDisplayPreHover }: any) => {
+// TODO: Revisar si es necesario el whereDisplayPreHover
+const IMG_Hover = ({ children, className, dataToDisplay, isBlog = false, whereDisplayPreHover }: any) => {
 	const { imgSrc, title, subtitle, colorOverlay } = dataToDisplay
-	const [isHovering, setIsHovering] = useState(false)
 
 	return (
-		<div
-			className={twMerge('relative flex h-full w-full overflow-hidden', className)}
-			onMouseEnter={() => setIsHovering(true)}
-			onMouseLeave={() => setIsHovering(false)}>
-			{/* Texto parte inferior, antes del hover */}
-			{/* SON DOS OPCIONES, El primero por si es blog, el segundo por defecto y si no están haciendo hover */}
-			{isBlog && (
-				<div className={twMerge(`mb-3 flex text-left ${isHovering ? 'invisible' : 'visible'}`, whereDisplayPreHover)}>
-					<TextContent className='min-w-fit'>
-						0{isBlog}
-						<Adorno_circulo_item size='sm-sz' />
-					</TextContent>
-					<article>
-						<TextContent>{title}</TextContent>
-						<TextSmall className=''>{subtitle}</TextSmall>
-					</article>
-				</div>
-			)}
-			{!isHovering && !isBlog && (
-				<div className={twMerge('absolute bottom-5 left-0 right-0', whereDisplayPreHover)}>
-					<TextSmall className=''>
-						<strong>{title}</strong> <br />
-						{subtitle}
-					</TextSmall>
-				</div>
-			)}
-
-			{/* Cubre el CE, antes del hover */}
+		<div className={twMerge('group relative flex h-full w-full overflow-hidden', className)}>
 			<Image
 				src={imgSrc}
 				alt={isBlog ? 'Imagen referencia del blog Intermission' : 'Caso de éxito Intermission'}
@@ -46,12 +20,31 @@ const IMG_Hover = ({ children, className, dataToDisplay, isBlog, whereDisplayPre
 				objectFit='cover'
 			/>
 
+			{/* Texto parte inferior, antes del hover */}
+			{isBlog ? (
+				<div className={twMerge(`mb-3 flex text-left opacity-100 transition duration-300 group-hover:opacity-0`)}>
+					<TextContent className='min-w-fit'>
+						{isBlog}
+						<Adorno_circulo_item size='sm-sz' />
+					</TextContent>
+					<article>
+						<TextContent>{title}</TextContent>
+						<TextSmall className=''>{subtitle}</TextSmall>
+					</article>
+				</div>
+			) : (
+				<div className='absolute bottom-5 left-0 right-0 block bg-black/30 opacity-100 transition duration-300 group-hover:opacity-0'>
+					<TextSmall>
+						<strong>{title}</strong> <br />
+						{subtitle}
+					</TextSmall>
+				</div>
+			)}
+
 			{/* Información que aparece cuando se hace hover */}
 			<div
-				className={`absolute inset-0 flex flex-col items-center justify-center overflow-y-scroll p-4 transition-opacity duration-300 sm:justify-start ${
-					isHovering ? 'opacity-80' : 'opacity-0'
-				}`}
-				style={{ backgroundColor: colorOverlay }}>
+				className='absolute inset-0 flex h-full flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+				style={{ backgroundColor: chroma(colorOverlay).alpha(0.8).css() }}>
 				{children}
 			</div>
 		</div>
