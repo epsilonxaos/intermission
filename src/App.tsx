@@ -1,3 +1,4 @@
+import ScrollToTop from '@components/ScrollToTop'
 import AppContext from '@contexts/AppContext'
 import Footer from '@modules/Footer'
 import Header from '@modules/Header'
@@ -16,6 +17,7 @@ function App() {
 
 	return (
 		<AppContext.Provider value={{ state, dispatch }}>
+			<ScrollToTop />
 			<Toaster />
 			<Header />
 			<Routes />
