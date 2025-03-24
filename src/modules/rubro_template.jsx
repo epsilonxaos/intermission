@@ -125,10 +125,13 @@ const RubroTemplate = ({ rubroData, breakpoint, CEsContent }) => {
 			<Section className='px-0 sm:px-0'>
 				<TextTitle className='mb-10 self-start'>Casos de Éxito</TextTitle>
 				{/* contenedor de imagenes */}
-				<section className='flex w-full flex-col justify-between gap-8 sm:flex-row'>
+				<section className='grid w-full grid-cols-1 justify-between gap-4 sm:flex-row md:grid-cols-2 md:gap-8 lg:grid-cols-3'>
 					{cesData.map((CE, idx) => (
 						<IMG_Hover
-							className='h-full max-h-[390px] w-full text-center sm:max-h-[530px] md:max-h-none md:min-h-[530px]'
+							className={twMerge(
+								'col-span-1 h-full max-h-[400px] w-full text-center sm:max-h-[530px] md:max-h-none md:min-h-[530px]',
+								idx === cesData.length - 1 && 'md:col-span-2 lg:col-span-1'
+							)}
 							key={'card-info-' + idx} // TODO: Verificar si se puede cambiar por CE.id
 							dataToDisplay={{
 								imgSrc: CE.imgSrc,
@@ -136,7 +139,7 @@ const RubroTemplate = ({ rubroData, breakpoint, CEsContent }) => {
 								subtitle: CE.ubicacion,
 								colorOverlay: colorBg,
 							}}>
-							<TextSubcontent className='grid cursor-default gap-6 p-4 text-left text-sm !leading-5 tracking-normal'>
+							<TextSubcontent className='grid cursor-default gap-4 p-4 text-left text-sm !leading-5 tracking-normal md:gap-6'>
 								{CEsContent[idx] && CEsContent[idx]}
 							</TextSubcontent>
 						</IMG_Hover>
