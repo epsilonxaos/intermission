@@ -1,17 +1,13 @@
-import { ButtonForLink } from '@components/Button';
-import Main_screen from '@components/Main_screen';
-import Section from '@components/Section';
-import { TextContent } from '@components/Text';
-import Adorno_circulo_item from '@components/circle_decoration';
-import Footer from '@modules/FooterOld';
-import { Hero } from '@modules/Hero';
-import Team_AboutUs from '@modules/about_us_TEAM';
-import useScreenSize from 'src/util/screenSize';
+import { ButtonForLink } from '@components/Button'
+import Container from '@components/Container'
+import Main_screen from '@components/Main_screen'
+import Section from '@components/Section'
+import { TextContent } from '@components/Text'
+import { Hero } from '@modules/Hero'
+import Team_AboutUs from '@modules/about_us_TEAM'
+import useScreenSize from 'src/util/screenSize'
 
-
-
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState } from 'react'
 
 const About_us = () => {
 	const [teamMembers, setTeamMembers] = useState([{}])
@@ -20,7 +16,7 @@ const About_us = () => {
 		setTeamMembers(teamMembersRAW)
 	}, [])
 	return (
-		<Main_screen>
+		<Main_screen className=''>
 			<Hero divClassName='max-w-[1000px] w-9/12'>
 				<TextContent className='flex flex-col gap-4 text-left text-sm sm:items-center sm:text-center sm:text-xl'>
 					<p>
@@ -51,13 +47,19 @@ const About_us = () => {
 					/>
 				</TextContent>
 			</Hero>
-			<Section className={'sm:gap-y-15 gap-y-10'}>
+			<Container className='relative z-[1] !p-0'>
+				<div className='absolute -left-[250px] top-0 z-[-1] size-[550px] rounded-full bg-[#003484]/40 blur-3xl' />
+			</Container>
+			<Section className={'sm:gap-y-15 relative z-[2] gap-y-10'}>
 				<Team_AboutUs
 					screenSize={breakpoint}
 					team={teamMembers}
 				/>
 			</Section>
-			{/* <Footer /> */}
+
+			<Container className='relative z-[1] !p-0'>
+				<div className='absolute -bottom-[250px] -right-[250px] z-[-1] size-[550px] rounded-full bg-[#003484]/40 blur-3xl' />
+			</Container>
 		</Main_screen>
 	)
 }

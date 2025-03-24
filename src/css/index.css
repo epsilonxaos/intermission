@@ -28,5 +28,5 @@ html {
 }
 body {
 	background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url('/imgs/fondo_negro.png');
-	/* @apply bg-black; */
+	overflow-x: hidden;
 }

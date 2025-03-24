@@ -48,7 +48,7 @@ const Routes = () => {
 				<Route
 					path='/partners'
 					component={Partners}
-				/> 
+				/>
 				<Route>404: No such page!</Route>
 			</Switch>
 		</main>

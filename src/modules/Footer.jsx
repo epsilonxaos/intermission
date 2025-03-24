@@ -1,8 +1,10 @@
+import FooterAminate from '@assets/img/footer-animation.png'
 import Logo from '@assets/img/intermission-logo.svg'
 import LineM from '@assets/img/line-footer-mobil.svg'
 import Line from '@assets/img/line-footer.svg'
 import MBP from '@assets/img/madebypartners.svg'
 import Numero from '@assets/img/numero.svg'
+import DotsFooter from '@components/Animations/DotsFooter'
 import Container from '@components/Container'
 import { TextSpecial } from '@components/Text'
 import { twMerge } from 'tailwind-merge'
@@ -22,17 +24,29 @@ const Footer = () => {
 				/>
 			)}
 
-			<Container className='px-[50px]'>
+			<Container className='relative z-10 px-[50px]'>
 				<img
 					className='mb-11 w-full max-w-[250px] invert md:max-w-[326px]'
 					src={Logo}
 					alt='Intermission'
 				/>
+				{!isMobile && (
+					<img
+						src={FooterAminate}
+						alt='Animation'
+						className='absolute right-0 top-0 size-[250px] object-contain'
+					/>
+				)}
 				<a
 					className='mb-11 inline-block text-xs'
 					href='mailto:hello@intermission.partners'>
 					hello@intermission.partners
 				</a>
+
+				{/* <img
+					src={FooterAminate}
+					alt='Animation'
+				/> */}
 
 				{isMobile ? <MobilGrid /> : <DeskGrid />}
 			</Container>
@@ -71,8 +85,16 @@ const MobilGrid = () => {
 
 			<TextSpecial className='md:text-[52px]'>Start</TextSpecial>
 
-			<div className='flex'>
+			<div className='relative grid grid-cols-2'>
 				<TermsAndConditions />
+
+				<div className='relative'>
+					<img
+						src={FooterAminate}
+						alt='Animation'
+						className='absolute -top-[60px] right-0 h-auto w-full max-w-[150px] object-contain'
+					/>
+				</div>
 			</div>
 		</>
 	)
