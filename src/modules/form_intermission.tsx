@@ -36,7 +36,7 @@ const Form_Intermission = ({ className, classForm }: any) => {
 		}
 		api.fetchData(opt).then(() => {
 			reset()
-			window.location.href = '/'
+			window.location.href = '/' // useNavigate()?
 		})
 	}
 
@@ -77,8 +77,14 @@ const Form_Intermission = ({ className, classForm }: any) => {
 					name='correo'
 					placeholder='Correo'
 					id
-					validate={{
-						rules: { required: 'Este campo es requerido' },
+					validate={{ 
+						rules: { 
+							required: 'Este campo es requerido',
+							pattern: {
+								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+								message: 'Por favor ingresa un correo válido',
+							},
+						},
 						register,
 						validateErrorMessage: errors.correo?.message as string | undefined,
 					}}
@@ -97,7 +103,7 @@ const Form_Intermission = ({ className, classForm }: any) => {
 					validate={{
 						rules: { required: 'Este campo es requerido' },
 						register,
-						validateErrorMessage: errors.nombre_empresa?.message as string | undefined,
+						validateErrorMessage: errors.rubro?.message as string | undefined,
 					}}
 				/>
 				<Select
@@ -113,7 +119,7 @@ const Form_Intermission = ({ className, classForm }: any) => {
 					validate={{
 						rules: { required: 'Este campo es requerido' },
 						register,
-						validateErrorMessage: errors.nombre_empresa?.message as string | undefined,
+						validateErrorMessage: errors.servicio?.message as string | undefined,
 					}}
 				/>
 

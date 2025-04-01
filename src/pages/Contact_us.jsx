@@ -1,3 +1,4 @@
+import Container from '@components/Container'
 import Main_screen from '@components/Main_screen'
 import { TextSpecial } from '@components/Text'
 import { Hero } from '@modules/Hero'
@@ -9,7 +10,9 @@ const Contact_us = () => {
 			<Hero>
 				<TextSpecial>A Digital Consultancy Company.</TextSpecial>
 			</Hero>
-			<Form_Intermission />
+			<Container>
+				<Form_Intermission />
+			</Container>
 		</Main_screen>
 	)
 }

@@ -15,7 +15,7 @@ export default function Select(opt: Readonly<TInputParams>) {
 			</label>}
 
 			<select
-				defaultValue={0}
+				defaultValue={""}
 				className={twMerge('select bg-transparent w-full px-2 py-4 rounded-none border-2 border-[#003484] text-[#808080] !shadow-none !outline-none', `${validate?.validateErrorMessage ? 'border-2 border-red-500' : ''}`)}
 				{...(id && { id: name })}
 				{...{ name }}
@@ -23,7 +23,7 @@ export default function Select(opt: Readonly<TInputParams>) {
 				{...(validate && validate.register(name, validate.rules))}
 				{...(!validate && { name })}
 				{...(onChange && { onChange })}>
-				<option className=' text-[#808080]' value="0" disabled hidden>Seleccione una opción</option>
+				<option className=' text-[#808080]' value="" disabled hidden>Seleccione una opción</option>
 				{options &&
 					options.map((op, idx) => (
 						<option
