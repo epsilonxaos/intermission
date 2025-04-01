@@ -10,6 +10,7 @@ import { TextSpecial, TextTitle } from '@components/Text'
 import Adorno_circulo_item from '@components/circle_decoration'
 import { Hero } from '@modules/Hero'
 import { motion } from 'framer-motion'
+import { Link } from 'wouter'
 
 import { HiOutlineArrowRightCircle } from 'react-icons/hi2'
 
@@ -68,11 +69,12 @@ const Home = () => {
 					alt='Information'
 					className='md:hidden'
 				/>
-
-				<button className='ml-auto mr-0 flex items-center gap-1 text-[#5C8BD5]'>
-					<HiOutlineArrowRightCircle size={18} />
-					See more
-				</button>
+				<Link to='/about_us'>
+					<button className='ml-auto mr-0 flex items-center gap-1 text-[#5C8BD5]'>
+						<HiOutlineArrowRightCircle size={18} />
+						See more
+					</button>
+				</Link>
 			</Container>
 
 			<Container>

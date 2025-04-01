@@ -6,6 +6,7 @@ import { TextContent } from '@components/Text'
 import { Hero } from '@modules/Hero'
 import Team_AboutUs from '@modules/about_us_TEAM'
 import useScreenSize from 'src/util/screenSize'
+import { Link } from 'wouter'
 
 import { useEffect, useState } from 'react'
 
@@ -38,13 +39,15 @@ const About_us = () => {
 					<p className=''>
 						<strong>Intermission</strong>, the intelligence division of Made By Partners.
 					</p>
-					<ButtonForLink
-						className='mt-8 sm:mt-14'
-						colorText='text-white'
-						text='See More'
-						linkTo='/' //Aquí o desde onclick
-						infoFor={'Intermission'}
-					/>
+					<Link to='/contact_us'>
+						<ButtonForLink
+							className='mt-8 sm:mt-14'
+							colorText='text-white'
+							text='See More'
+							linkTo='/' //Aquí o desde onclick
+							infoFor={'Intermission'}
+						/>
+					</Link>
 				</TextContent>
 			</Hero>
 			<Container className='relative z-[1] !p-0'>

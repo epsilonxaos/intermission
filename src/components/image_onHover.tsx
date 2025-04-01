@@ -1,8 +1,6 @@
 import chroma from 'chroma-js'
 import { twMerge } from 'tailwind-merge'
 
-import { useState } from 'react'
-
 import { Image } from './Image'
 import { TextContent, TextSmall } from './Text'
 import Adorno_circulo_item from './circle_decoration'
@@ -13,17 +11,14 @@ const IMG_Hover = ({ children, className, dataToDisplay, isBlog = false, whereDi
 
 	return (
 		<div className={className}>
-			<div className={twMerge('group relative mx-auto flex h-full w-full max-w-[420px] overflow-hidden')}>
-				<Image
-					src={imgSrc}
-					alt={isBlog ? 'Imagen referencia del blog Intermission' : 'Caso de éxito Intermission'}
-					className='max-h-[530px] w-full transition-transform duration-300 group-hover:scale-105'
-					objectFit='cover'
-				/>
-
+			<div
+				className={twMerge(
+					'group relative mx-auto flex h-full w-full max-w-[420px] overflow-hidden',
+					isBlog ? 'flex-col' : ''
+				)}>
 				{/* Texto parte inferior, antes del hover */}
 				{isBlog ? (
-					<div className={twMerge(`mb-3 flex text-left opacity-100 transition duration-300 group-hover:opacity-0`)}>
+					<div className={twMerge(`mb-2 flex text-left opacity-100 transition duration-300 group-hover:opacity-0`)}>
 						<TextContent className='min-w-fit'>
 							{isBlog}
 							<Adorno_circulo_item size='sm-sz' />
@@ -41,12 +36,17 @@ const IMG_Hover = ({ children, className, dataToDisplay, isBlog = false, whereDi
 						</TextSmall>
 					</div>
 				)}
-
+				<Image
+					src={imgSrc}
+					alt={isBlog ? 'Imagen referencia del blog Intermission' : 'Caso de éxito Intermission'}
+					className='h-full max-h-[530px] min-h-[350px] w-full transition-transform duration-300 group-hover:scale-150'
+					objectFit='cover'
+				/>
 				{/* Información que aparece cuando se hace hover */}
 				<div
 					className='absolute inset-0 flex h-full flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100'
 					style={{ backgroundColor: chroma(colorOverlay).alpha(0.8).css() }}>
-					<div className='mx-auto max-w-[350px]'>{children}</div>
+					<div className='mx-auto h-full max-w-[350px] overflow-y-scroll'>{children}</div>
 				</div>
 			</div>
 		</div>

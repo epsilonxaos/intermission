@@ -63,10 +63,10 @@ const Blog = () => {
 			</Hero>
 			<Section className='xl:px-0'>
 				{/* Contenedor de articulos */}
-				<section className='grid w-full gap-11 sm:grid-cols-3'>
+				<section className='grid w-full gap-11 md:grid-cols-2 lg:grid-cols-3'>
 					{articles.map((art, idx) => (
 						<IMG_Hover
-							className='sm:max-[500px] max-h-[400px] flex-col justify-between'
+							className='min-h-[350px] sm:max-h-[500px] w-full h-full max-h-[400px] flex-col justify-between'
 							key={idx}
 							isBlog={(idx % 3) + 1}
 							dataToDisplay={{
