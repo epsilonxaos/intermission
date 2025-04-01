@@ -17,7 +17,7 @@ const Team_AboutUs = ({ team, screenSize }) => {
 	}
 
 	useEffect(() => {
-		if (screenSize === 'xs') {
+		if (screenSize === 'sm') {
 			setCurrentIndex(0)
 		}
 	}, [screenSize])
@@ -33,7 +33,7 @@ const Team_AboutUs = ({ team, screenSize }) => {
 					onClick={handlePrev}
 					className='hidden self-center md:block'>
 					<Image
-						className='rotate-180 w-[25px]'
+						className='w-[25px] rotate-180'
 						src={`/imgs/icon_Flecha_Derecha.svg`}
 						alt={`Flecha izquierda para carrusel de equipo de Intermission`}
 						objectFit='contain'
@@ -51,7 +51,7 @@ const Team_AboutUs = ({ team, screenSize }) => {
 								key={idx}
 								className='flex-shrink-0 px-8 py-4 md:w-1/3'>
 								<Image
-									className='mb-4 w-full min-h-[340px] bg-center'
+									className='mb-4 h-full max-h-[600px] min-h-[300px] w-full bg-center md:max-h-[200px] lg:max-h-[300px]'
 									src={member.imgSrc}
 									alt={`Persona del equipo de Intermission`}
 									objectFit='cover'
@@ -70,7 +70,7 @@ const Team_AboutUs = ({ team, screenSize }) => {
 					onClick={handleNext}
 					className='hidden self-center md:block'>
 					<Image
-						className='w-[25px] '
+						className='w-[25px]'
 						src={`/imgs/icon_Flecha_Derecha.svg`}
 						alt={`Flecha Derecha para carrusel de equipo de Intermission`}
 						objectFit='contain'

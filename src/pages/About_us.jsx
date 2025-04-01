@@ -17,7 +17,7 @@ const About_us = () => {
 		setTeamMembers(teamMembersRAW)
 	}, [])
 	return (
-		<Main_screen className=''>
+		<Main_screen>
 			<Hero divClassName='max-w-[1000px] w-9/12'>
 				<TextContent className='flex flex-col gap-4 text-left text-sm sm:items-center sm:text-center sm:text-xl'>
 					<p>
@@ -53,7 +53,7 @@ const About_us = () => {
 			<Container className='relative z-[1] !p-0'>
 				<div className='absolute -left-[250px] top-0 z-[-1] size-[550px] rounded-full bg-[#003484]/40 blur-3xl' />
 			</Container>
-			<Section className={'sm:gap-y-15 relative z-[2] gap-y-10'}>
+			<Section className={'sm:gap-y-15 relative z-[2] gap-y-10 px-0 sm:px-0'}>
 				<Team_AboutUs
 					screenSize={breakpoint}
 					team={teamMembers}
@@ -69,18 +69,18 @@ const About_us = () => {
 
 const teamMembersRAW = [
 	{
-		name: 'César Sosa',
+		name: 'César Sosa 1',
 		role: 'Director Comercial',
 		imgSrc: 'team/team1.png',
 		description:
 			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
 	},
 	{
-		name: 'César Sosa',
+		name: 'César Sosa 2',
 		role: 'Director Comercial',
 		imgSrc: 'team/team2.png',
 		description:
-			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
+			'In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause. In a world where disorder and complexity are the norm, Intermission emerges as the necessary strategic pause.',
 	},
 	{
 		name: 'César Sosa',
