@@ -81,14 +81,14 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 
 	return (
 		<div className='relative w-full'>
-			<TextTitle className='mb-12 self-start sm:self-end'>
+			<TextTitle className='mb-12 text-start md:text-end'>
 				Rubros
 				<Adorno_circulo_item size='lg-sz' />
 			</TextTitle>
 
 			{isMobile && (
 				<div
-					className='flex w-full flex-col gap-16 overflow-x-hidden sm:flex-row'
+					className='flex w-full flex-col gap-16 overflow-x-hidden md:flex-row'
 					style={{ scrollSnapType: 'x mandatory' }}>
 					{rubros.map((rubro, idx) => (
 						<RubroContainer
@@ -132,9 +132,9 @@ const RubrosCarrusel = ({ rubros }: RubrosCarruselProps) => {
 
 const RubroContainer = ({ rubro }: { rubro: Rubro }) => (
 	<div
-		className='flex w-full flex-wrap items-center justify-between gap-y-4 sm:flex-shrink-0'
+		className='flex w-full flex-wrap items-center justify-between gap-y-4 md:flex-shrink-0'
 		style={{ scrollSnapAlign: 'start' }}>
-		<div className='flex flex-grow flex-row items-center gap-3 sm:w-4/12 md:gap-5'>
+		<div className='flex flex-grow flex-row items-center gap-3 md:w-4/12 md:gap-5'>
 			<Image
 				className='size-[60px] invert lg:size-[80px]'
 				src={`/imgs/rubros/${rubro.docus}.svg`}
@@ -152,7 +152,7 @@ const RubroContainer = ({ rubro }: { rubro: Rubro }) => (
 			</div>
 		</div>
 		<Image
-			className='min-h-[248px] min-w-[300px] flex-grow sm:max-w-[60%]'
+			className='min-h-[248px] min-w-[300px] flex-grow md:max-w-[60%]'
 			src={`/imgs/rubros/${rubro.docus}.png`}
 			alt={`Imagen de ${rubro.name}`}
 			objectFit='cover'

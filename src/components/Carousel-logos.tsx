@@ -48,7 +48,7 @@ export default function LogoCarousel({ logos, direction = 'left' }: { direction:
 				</div>
 
 				<div
-					className='absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black to-black/0 mix-blend-multiply backdrop-blur-sm sm:w-56'
+					className='absolute -left-1 top-0 h-full w-[30%] bg-gradient-to-r from-black to-black/0 mix-blend-multiply backdrop-blur-sm sm:w-56'
 					style={{
 						maskImage: 'linear-gradient(to right, black 75% , transparent 100%)',
 						WebkitMaskImage: 'linear-gradient(to right, black 75%, transparent 100%)',
@@ -57,7 +57,7 @@ export default function LogoCarousel({ logos, direction = 'left' }: { direction:
 
 				{/* Gradiente derecho */}
 				<div
-					className='absolute right-0 top-0 h-full w-28 bg-gradient-to-l from-black to-black/0 mix-blend-multiply backdrop-blur-sm sm:w-56'
+					className='absolute -right-1 top-0 h-full w-[30%] bg-gradient-to-l from-black to-black/0 mix-blend-multiply backdrop-blur-sm sm:w-56'
 					style={{
 						maskImage: 'linear-gradient(to left, black 75% , transparent 100%)',
 						WebkitMaskImage: 'linear-gradient(to left, black 75%, transparent 100%)',

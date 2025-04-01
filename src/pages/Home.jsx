@@ -62,12 +62,12 @@ const Home = () => {
 				<img
 					src={informationDesk}
 					alt='Information'
-					className='hidden md:block'
+					className='hidden sm:block'
 				/>
 				<img
 					src={informationMobil}
 					alt='Information'
-					className='md:hidden'
+					className='place-self-center sm:hidden'
 				/>
 				<Link to='/about_us'>
 					<button className='ml-auto mr-0 flex items-center gap-1 text-[#5C8BD5]'>
