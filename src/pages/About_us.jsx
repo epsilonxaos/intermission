@@ -39,15 +39,13 @@ const About_us = () => {
 					<p className=''>
 						<strong>Intermission</strong>, the intelligence division of Made By Partners.
 					</p>
-					<Link to='/contact_us'>
 						<ButtonForLink
 							className='mt-8 sm:mt-14'
 							colorText='text-white'
 							text='See More'
-							linkTo='/' //Aquí o desde onclick
+							linkTo='/contact_us' //Aquí o desde onclick
 							infoFor={'Intermission'}
 						/>
-					</Link>
 				</TextContent>
 			</Hero>
 			<Container className='relative z-[1] !p-0'>
